@@ -1,3 +1,5 @@
+package course;
+
 public class Faculty {
     private  String name;
     private  int facultyID;
