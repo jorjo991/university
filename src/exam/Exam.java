@@ -14,7 +14,6 @@ public abstract class Exam  {
         this.course = course;
     }
 
-    public  abstract  Grade [] result(Student [] students);
 
 
     public Student[] getStudents() {

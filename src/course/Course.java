@@ -2,16 +2,15 @@ package course;
 
 
 import professor.Professor;
+import registration.Registrable;
 import student.Student;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 
 
-public class Course {
-    private  String name;
+public final class Course  implements Registrable {
+    private final String NAME;
     private Professor professorTeacherCourse;
     private Integer credit;
     private Student [] students = new Student[0];
@@ -19,7 +18,7 @@ public class Course {
     private  int countCourse;
 
     public Course(String name, Integer credit) {
-        this.name = name;
+        this.NAME = name;
         this.credit = credit;
     }
 
@@ -46,7 +45,7 @@ public class Course {
     @Override
     public String toString() {
         return "Course{" +
-                "name='" + name + '\'' +
+                "name='" + NAME + '\'' +
                 ", professorTeacherCourse=" + professorTeacherCourse +
                 ", credit=" + credit +
                 ", students=" + Arrays.toString(students) +
@@ -58,21 +57,19 @@ public class Course {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Course course = (Course) o;
-        return Objects.equals(name, course.name) && Objects.equals(professorTeacherCourse, course.professorTeacherCourse) && Objects.equals(credit, course.credit) && Objects.deepEquals(students, course.students) && Objects.equals(belongsFaculty, course.belongsFaculty);
+        return Objects.equals(NAME, course.NAME) && Objects.equals(professorTeacherCourse, course.professorTeacherCourse) && Objects.equals(credit, course.credit) && Objects.deepEquals(students, course.students) && Objects.equals(belongsFaculty, course.belongsFaculty);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, professorTeacherCourse, credit, Arrays.hashCode(students), belongsFaculty);
+        return Objects.hash(NAME, professorTeacherCourse, credit, Arrays.hashCode(students), belongsFaculty);
     }
 
     public String getName() {
-        return name;
+        return NAME;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+
 
     public Professor getProfessorTeacherCourse() {
         return professorTeacherCourse;

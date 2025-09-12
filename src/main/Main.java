@@ -1,90 +1,116 @@
 package main;
 
 import administration.Administration;
-import administration.Administration;
+import administration.CourseService;
+import administration.StudentService;
 import course.Course;
 import course.Faculty;
+import exam.FinalExam;
+import exam.MidtermExam;
+import exam.Result;
 import person.Gender;
-import person.Person;
 import professor.Professor;
+import room.ExamRoom;
+import room.Room;
 import student.Student;
+import university.University;
 
 import java.time.LocalDate;
-
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        // Create Administration instance
+        // Initialize Administration and University
         Administration admin = new Administration();
+        University university = new University(admin);
 
-        // Create Faculty objects
-        Faculty computerScience = new Faculty("Computer Science", 1);
-        Faculty mathematics = new Faculty("Mathematics", 2);
-        admin.addFaculty(computerScience);
-        admin.addFaculty(mathematics); // Test adding same faculty again (duplicate check)
-        System.out.println("Faculties after registration: " + java.util.Arrays.toString(admin.faculties));
+        // Create Rooms
+        Room room1 = new ExamRoom("101", 30,true); // Room 101, available
+        Room room2 = new ExamRoom("102",35, true); // Room 102, available
+        university.setRooms(new Room[]{room1, room2});
+        System.out.println("Available Rooms: " + Arrays.toString(university.getRooms()));
 
-        // Create Professor objects
+        // Create Faculties
+        Faculty csFaculty = new Faculty("Computer Science", 1);
+        Faculty mathFaculty = new Faculty("Mathematics", 2);
+        admin.registerFaculty(csFaculty);
+        admin.registerFaculty(mathFaculty);
+
+        System.out.println("Faculties "+ Arrays.toString(university.getFaculties()));
+
+
+        // Create Professors
         Professor prof1 = new Professor(101, 45, "Dr. Smith", "Johnson", Gender.MALE, "Algorithms");
         Professor prof2 = new Professor(102, 50, "Dr. Lee", "Kim", Gender.FEMALE, "Calculus");
-        admin.professorRegistration(prof1);
-        admin.professorRegistration(prof1); // Test duplicate professor
-        admin.professorRegistration(prof2);
-        System.out.println("Professors after registration: " + java.util.Arrays.toString(admin.professors));
+        admin.registerProfessor(prof1);
+        admin.registerProfessor(prof2);
+        System.out.println("Registered Professors: " + Arrays.toString(university.getProfessor()));
+        prof1.getInfo();
+        prof2.getInfo();
 
-        // Register Professors on Faculties
-        admin.registrationProfessorOnFaculty(computerScience, prof1);
-        admin.registrationProfessorOnFaculty(mathematics, prof2);
-        System.out.println("Prof1 Faculties: " + java.util.Arrays.toString(prof1.getFaculties()));
-
-        // Create Course objects
+        // Create Courses
         Course javaCourse = new Course("Introduction to Java", 6);
         Course calculusCourse = new Course("Calculus I", 6);
-        Course algorithmsCourse = new Course("Algorithms", 5);
-        admin.courseRegistration(javaCourse);
-        admin.courseRegistration(javaCourse); // Test duplicate course
-        admin.courseRegistration(calculusCourse);
-        admin.courseRegistration(algorithmsCourse);
-        System.out.println("Courses after registration: " + java.util.Arrays.toString(admin.courses));
+        admin.registerCourse(javaCourse);
+        admin.registerCourse(calculusCourse);
+        System.out.println("Registered Courses: " + Arrays.toString(university.getCourse()));
 
-        // Assign Faculties to Courses
-        javaCourse.assignFaculty(computerScience);
-        calculusCourse.assignFaculty(mathematics);
-        algorithmsCourse.assignFaculty(computerScience);
-        System.out.println("Java Course Faculty: " + javaCourse.getBelongsFaculty().getName());
-
-        // Register Professors on Courses
-        admin.registerProfessorOnCourse(prof1, javaCourse);
-        admin.registerProfessorOnCourse(prof2, calculusCourse);
-        admin.registerProfessorOnCourse(prof1, algorithmsCourse);
-        System.out.println("Java Course Professor: " + javaCourse.getProfessorTeacherCourse().getName());
-
-        // Create Student objects
-        Student student1 = new Student(1, 20, "Alice", "Smith", Gender.FEMALE, LocalDate.of(2005, 5, 15), true, 3, 30);
-        Student student2 = new Student(2, 22, "Bob", "Johnson", Gender.MALE, LocalDate.of(2003, 8, 22), false, 5, 45);
+        // Create Students
+        Student student1 = new Student(1, 20, "Alice", "Smith", Gender.FEMALE, LocalDate.of(2005, 5, 15), true, 3, 12);
+        Student student2 = new Student(2, 22, "Bob", "Johnson", Gender.MALE, LocalDate.of(2003, 8, 22), false, 5, 18);
         admin.registerStudent(student1);
-        admin.registerStudent(student1); // Test duplicate student
         admin.registerStudent(student2);
-        System.out.println("Students after registration: " + java.util.Arrays.toString(admin.students));
+        System.out.println("Registered Students: " + Arrays.toString(university.getStudents()));
+        student1.getInfo();
+        student2.getInfo();
 
-        // Register Students on Faculties
-        admin.registrationStudentOnFaculty(computerScience, student1);
-        admin.registrationStudentOnFaculty(mathematics, student2);
-        System.out.println("Student1 Faculty: " + student1.getFaculty().getName());
 
-        // Register Students on Courses
-        student1.sendRegistrationRequestONCourse(admin, javaCourse);
-        student1.sendRegistrationRequestONCourse(admin, algorithmsCourse);
-        student2.sendRegistrationRequestONCourse(admin, calculusCourse);
-        System.out.println("Java Course Students: " + java.util.Arrays.toString(javaCourse.getStudents()));
+        CourseService courseService= new CourseService();
+        courseService.registerCourseOnFaculty(javaCourse,csFaculty);
+        courseService.registerCourseOnFaculty(calculusCourse,mathFaculty);
+        System.out.println("Courses that belongs faculties");
+        Arrays.stream(university.getCourse()).forEach(x-> System.out.println(x.getBelongsFaculty()));
 
-        // Test Polymorphic getInfo
-        admin.getInfo(student1); // Calls Student's getInfo
-        admin.getInfo(prof1); // Calls Professor's getInfo
 
-        // Additional Test: isDuplicate
-        Student duplicateStudent = new Student(1, 20, "Alice", "Smith", Gender.FEMALE, LocalDate.of(2005, 5, 15), true, 3, 30);
-        boolean isDup = admin.isDuplicate(duplicateStudent, admin.students);
-        System.out.println("Is duplicate student? " + isDup);
+        StudentService studentService= new StudentService();
+        studentService.registerStudentOnCourse(student1,javaCourse);
+        studentService.registerStudentOnFaculty(student1,csFaculty);
+        studentService.registerStudentOnCourse(student2,calculusCourse);
+        studentService.registerStudentOnFaculty(student2,mathFaculty);
+
+        System.out.println("Student "+student1.getName()+"studies"+student1.getFaculty());
+
+        Student[] examStudents = {student1, student2};
+        FinalExam finalExam = new FinalExam(examStudents, javaCourse);
+        MidtermExam midtermExam = new MidtermExam(examStudents, calculusCourse);
+
+        // Start and End Final Exam
+        finalExam.startExam(prof1, examStudents, room1);
+        System.out.println("Room1 Availability: " + room1.getAvailable());
+        finalExam.endExam(room1);
+        System.out.println("Room1 Availability after end: " + room1.getAvailable());
+
+        // Get Results
+        Result[] finalResults = finalExam.getResults(javaCourse, examStudents);
+        System.out.println("Final Exam Results: ");
+        for (Result result : finalResults) {
+            System.out.println(result.getStudent().getName() + ": " + result.getResult());
+        }
+
+        // Start and End Midterm Exam
+        midtermExam.startExam(prof2, examStudents, room2);
+        System.out.println("Room2 Availability: " + room2.getAvailable());
+        midtermExam.endExam(room2);
+        System.out.println("Room2 Availability after end: " + room2.getAvailable());
+
+        // Get Results
+        Result[] midtermResults = midtermExam.getResults(calculusCourse, examStudents);
+        System.out.println("Midterm Exam Results: ");
+        for (Result result : midtermResults) {
+            System.out.println(result.getStudent().getName() + ": " + result.getResult());
+        }
+
+        // print report
+        studentService.report(student1);
     }
 }

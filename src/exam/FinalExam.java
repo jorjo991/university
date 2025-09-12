@@ -1,31 +1,43 @@
 package exam;
 
 import course.Course;
+import course.Faculty;
+import professor.Professor;
+import room.Room;
 import student.Student;
 
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
-public class FinalExam extends  Exam{
+public class FinalExam extends  Exam implements ExamBehavior{
 
     public FinalExam(Student [] students, Course course) {
         super(students,course);
-
     }
 
     @Override
-    public Grade[] result(Student [] students) {
-        Grade [] grades= new Grade[students.length];
-        for( int i=0; i<students.length; i++){
-            grades[i]= new Grade(students[i],Math.random()*100);
-
-        }
-       return grades;
-    }
-
-    public void printGrades(){
-        Grade [ ] result= result(getStudents());
-        for(Grade grade: result){
-            System.out.println(grade.getStudent().getName()+" "+grade.getExamResult());
+    public void startExam(Professor professor, Student[] students, Room room) {
+        if(professor!=null&&students.length>=1&&room.getAvailable()){
+            room.setAvailable(false);
+            System.out.println("Exam Started Successfully");
         }
     }
+
+    @Override
+    public void endExam( Room room) {
+        room.setAvailable(true);
+        System.out.println("Exam Ended");
+    }
+
+    @Override
+    public Result[] getResults(Course course, Student[] students) {
+        Result [ ] results= new Result[students.length];
+        for(int i=0 ; i <students.length; i++){
+            double result=Math.random()*100;
+            results[i]= new Result(students[i],course,result);
+        }
+        return results;
+
+    }
+
 }

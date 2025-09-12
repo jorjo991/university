@@ -7,10 +7,11 @@ import person.Gender;
 import person.Person;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
 
-public class Student extends Person {
-    private final LocalDate dateOfBirt;
+public  final class Student extends Person {
+    private final LocalDate DATE_OF_BIRTH;
     private Faculty faculty;
     private Boolean hasScholarship;
     private Integer semester;
@@ -21,7 +22,7 @@ public class Student extends Person {
 
     public Student(Integer id, Integer age, String name, String surname, Gender gender, LocalDate dateOfBirt, Boolean hasScholarship, Integer semester, Integer credits) {
         super(id, age, name, surname, gender);
-        this.dateOfBirt = dateOfBirt;
+        this.DATE_OF_BIRTH = dateOfBirt;
         this.hasScholarship = hasScholarship;
         this.credits = credits;
         this.semester = semester;
@@ -30,11 +31,11 @@ public class Student extends Person {
 
 
     public void sendRegistrationRequestONCourse(Administration administration, Course course) {
-        administration.registerStudentOnCourse(this, course);
+
     }
 
     public void SendRegistrationRequestOnFaculty(Administration administration, Faculty faculty) {
-        administration.registrationStudentOnFaculty(faculty, this);
+
     }
 
 
@@ -59,7 +60,7 @@ public class Student extends Person {
 
     // info about DateOfBirt
     public LocalDate getDateOfBirt() {
-        return dateOfBirt;
+        return DATE_OF_BIRTH;
     }
 
 
@@ -114,5 +115,16 @@ public class Student extends Person {
         Student.countStudent = countStudent;
     }
 
-
+    @Override
+    public String toString() {
+        return "Student{" +
+                "dateOfBirt=" + DATE_OF_BIRTH +
+                ", faculty=" + faculty +
+                ", hasScholarship=" + hasScholarship +
+                ", semester=" + semester +
+                ", GPA=" + GPA +
+                ", passedCourse=" + Arrays.toString(passedCourse) +
+                ", credits=" + credits +
+                '}';
+    }
 }

@@ -1,8 +1,10 @@
 package person;
 
+import registration.Registrable;
+
 import java.util.Objects;
 
-public abstract class Person {
+public abstract class Person  implements Registrable {
     private Integer id;
     private  Integer age;
     private  String name;

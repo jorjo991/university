@@ -1,98 +1,99 @@
 package administration;
 
-import java.util.Arrays;
-
 import course.Course;
 import course.Faculty;
 import person.Person;
 import professor.Professor;
+import registration.Registrable;
+import repository.Repository;
+import repository.RepositoryImpl;
 import student.Student;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Administration {
-    public Course[] courses = new Course[0];
-    public Faculty[] faculties = new Faculty[0];
-    public Student[] students = new Student[0];
-    public Professor[] professors = new Professor[0];
 
+     private RepositoryImpl<Student> studentRepository= new RepositoryImpl<>(Student.class);
+     private RepositoryImpl<Professor> professorRepository= new RepositoryImpl<>(Professor.class);
+     private RepositoryImpl<Course> courseRepository= new RepositoryImpl<>(Course.class);
+     private RepositoryImpl<Faculty> facultyRepository= new RepositoryImpl<>(Faculty.class);
 
-    //polymorphic methods
-    public void getInfo(Person person) {
-        person.getInfo();
+    static {
+        System.out.println("Administration class loaded at " + LocalDateTime.now() + " (+04 timezone)");
     }
 
-    public boolean isDuplicate(Person person, Person[] persons) {
-        if(persons.length<=1) return false;
-        for (Person person1 : persons) {
-            if (person1.equals(person)) return true;
+    public static boolean isDuplicatePerson(Registrable registrable, Registrable[] registrables) {
+        if(registrables.length<=1) return false;
+        for (Registrable registrable1 : registrables) {
+            if (registrable1.equals(registrable)) return true;
         }
         return false;
     }
-
-    // adding new student to University
-    public void registerStudent(Student student) {
-        if (!isDuplicate(student, students)) {
-            this.students = Arrays.copyOf(this.students, this.students.length + 1);
-            this.students[this.students.length - 1] = student;
+   // register Student in university by Administration
+      public  void registerStudent(Student student){
+        if(student== null) throw  new NullPointerException();
+        if(!isDuplicatePerson(student, studentRepository.getAll())) {
+            studentRepository.register(student);
         }
-    }
-    // adding new course to University
-    public void courseRegistration(Course course) {
-        for (Course course1 : courses) {
-            if (course1.equals(course)) return;
-        }
-        this.courses = Arrays.copyOf(this.courses, this.courses.length + 1);
-        this.courses[this.courses.length - 1] = course;
-    }
 
-    // adding new professor to University
-    public void professorRegistration(Professor professor) {
-        if (!isDuplicate(professor, professors)) {
-            this.professors = Arrays.copyOf(this.professors, this.professors.length + 1);
-            this.professors[this.professors.length - 1] = professor;
-
-        }
-    }
-
-    // adding new faculty to  University
-    public void addFaculty(Faculty faculty) {
-        for (Faculty faculty1 : faculties) {
-            if (faculty1.equals(faculty)) return;
-        }
-        this.faculties = Arrays.copyOf(this.faculties, this.faculties.length + 1);
-        this.faculties[this.faculties.length - 1] = faculty;
-    }
-
-    // Register student to faculty
-    public void registrationStudentOnFaculty(Faculty faculty, Student student) {
-        student.setFaculty(faculty);
-
-    }
-    // Register Professor to faculty
-    public void registrationProfessorOnFaculty(Faculty faculty, Professor professor) {
-        professor.registrationOnFaculty(faculty);
-
-    }
-    // Register student on course
-    public void registerStudentOnCourse(Student student, Course course) {
-        for (Course course1 : courses) {
-            if (course1.equals(course)) {
-                course1.registerStudentOnCourse(student);
-            }
+      }
+    //register Course in university by Administration
+    public  void registerCourse(Course course){
+        if(course== null) throw  new NullPointerException();
+        if(!isDuplicatePerson(course, courseRepository.getAll())) {
+            courseRepository.register(course);
         }
 
     }
-     // register professor to course
-    public void registerProfessorOnCourse(Professor professor, Course course) {
-        for (Course course1 : courses) {
-            if (course1.equals(course)) {
-                course1.registerProfessorOnCourse(professor);
-            }
-
+    //register Professor in university by Administration
+    public  void registerProfessor(Professor professor){
+        if(professor== null)  throw  new NullPointerException();
+        if(!isDuplicatePerson(professor, professorRepository.getAll())) {
+            professorRepository.register(professor);
+        }
+    }
+    //register Faculty in university by Administration
+    public  void registerFaculty(Faculty faculty){
+        if(faculty== null)  throw  new NullPointerException();
+        if(!isDuplicatePerson(faculty, facultyRepository.getAll())) {
+            facultyRepository.register(faculty);
         }
     }
 
 
 
 
+    public RepositoryImpl<Student> getStudentRepository() {
+        return studentRepository;
+    }
 
+    public void setStudentRepository(RepositoryImpl<Student> studentRepository) {
+        this.studentRepository = studentRepository;
+    }
+
+    public RepositoryImpl<Professor> getProfessorRepository() {
+        return professorRepository;
+    }
+
+    public void setProfessorRepository(RepositoryImpl<Professor> professorRepository) {
+        this.professorRepository = professorRepository;
+    }
+
+    public RepositoryImpl<Course> getCourseRepository() {
+        return courseRepository;
+    }
+
+    public void setCourseRepository(RepositoryImpl<Course> courseRepository) {
+        this.courseRepository = courseRepository;
+    }
+
+    public RepositoryImpl<Faculty> getFacultyRepository() {
+        return facultyRepository;
+    }
+
+    public void setFacultyRepository(RepositoryImpl<Faculty> facultyRepository) {
+        this.facultyRepository = facultyRepository;
+    }
 }
