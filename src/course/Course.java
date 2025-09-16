@@ -1,51 +1,45 @@
 package course;
 
-
 import professor.Professor;
 import registration.Registrable;
 import student.Student;
-
 import java.util.Arrays;
 import java.util.Objects;
 
-
-public final class Course  implements Registrable {
-    private final String NAME;
+public final class Course implements Registrable {
+    private final String name;
     private Professor professorTeacherCourse;
     private Integer credit;
-    private Student [] students = new Student[0];
+    private Student[] students = new Student[0];
     private Faculty belongsFaculty;
-    private  int countCourse;
+    private int countCourse;
 
     public Course(String name, Integer credit) {
-        this.NAME = name;
+        this.name = name;
         this.credit = credit;
     }
 
-
     //registration student to Course
-
-    public void registerStudentOnCourse(Student student){
-        this.students= Arrays.copyOf(this.students,this.students.length+1);
-        this.students[this.students.length-1]=student;
+    public void registerStudentOnCourse(Student student) {
+        this.students = Arrays.copyOf(this.students, this.students.length + 1);
+        this.students[this.students.length - 1] = student;
 
     }
 
     //registration professor to Course
-    public  void registerProfessorOnCourse(Professor professor){
-              this.professorTeacherCourse=professor;
+    public void registerProfessorOnCourse(Professor professor) {
+        this.professorTeacherCourse = professor;
     }
 
     //assign to  Faculty of this course
-    public void  assignFaculty(Faculty faculty){
-        this.belongsFaculty=faculty;
+    public void assignFaculty(Faculty faculty) {
+        this.belongsFaculty = faculty;
     }
-
 
     @Override
     public String toString() {
         return "Course{" +
-                "name='" + NAME + '\'' +
+                "name='" + name + '\'' +
                 ", professorTeacherCourse=" + professorTeacherCourse +
                 ", credit=" + credit +
                 ", students=" + Arrays.toString(students) +
@@ -57,25 +51,21 @@ public final class Course  implements Registrable {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Course course = (Course) o;
-        return Objects.equals(NAME, course.NAME) && Objects.equals(professorTeacherCourse, course.professorTeacherCourse) && Objects.equals(credit, course.credit) && Objects.deepEquals(students, course.students) && Objects.equals(belongsFaculty, course.belongsFaculty);
+        return Objects.equals(name, course.name) && Objects.equals(professorTeacherCourse, course.professorTeacherCourse) && Objects.equals(credit, course.credit) && Objects.deepEquals(students, course.students) && Objects.equals(belongsFaculty, course.belongsFaculty);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(NAME, professorTeacherCourse, credit, Arrays.hashCode(students), belongsFaculty);
+        return Objects.hash(name, professorTeacherCourse, credit, Arrays.hashCode(students), belongsFaculty);
     }
 
     public String getName() {
-        return NAME;
+        return name;
     }
-
-
 
     public Professor getProfessorTeacherCourse() {
         return professorTeacherCourse;
     }
-
-
 
     public Integer getCredit() {
         return credit;
@@ -96,6 +86,5 @@ public final class Course  implements Registrable {
     public Faculty getBelongsFaculty() {
         return belongsFaculty;
     }
-
 
 }

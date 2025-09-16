@@ -4,17 +4,15 @@ package exam;
 import course.Course;
 import student.Student;
 
-public abstract class Exam  {
+public abstract class Exam {
 
-    private Student [] students;
-    private  Course course;
+    private Student[] students;
+    private Course course;
 
     public Exam(Student[] students, Course course) {
         this.students = students;
         this.course = course;
     }
-
-
 
     public Student[] getStudents() {
         return students;

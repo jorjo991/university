@@ -1,6 +1,7 @@
 package student;
 
 import administration.Administration;
+import administration.StudentService;
 import course.Course;
 import course.Faculty;
 import person.Gender;
@@ -10,8 +11,8 @@ import java.time.LocalDate;
 import java.util.Arrays;
 
 
-public  final class Student extends Person {
-    private final LocalDate DATE_OF_BIRTH;
+public final class Student extends Person {
+    private final LocalDate date;
     private Faculty faculty;
     private Boolean hasScholarship;
     private Integer semester;
@@ -22,22 +23,16 @@ public  final class Student extends Person {
 
     public Student(Integer id, Integer age, String name, String surname, Gender gender, LocalDate dateOfBirt, Boolean hasScholarship, Integer semester, Integer credits) {
         super(id, age, name, surname, gender);
-        this.DATE_OF_BIRTH = dateOfBirt;
+        this.date = dateOfBirt;
         this.hasScholarship = hasScholarship;
         this.credits = credits;
         this.semester = semester;
         countStudent += 1;
     }
 
-
-    public void sendRegistrationRequestONCourse(Administration administration, Course course) {
-
+    public void sendRegistrationRequestONCourse(StudentService studentService, Course course) {
+        studentService.registerStudentOnCourse(this,course);
     }
-
-    public void SendRegistrationRequestOnFaculty(Administration administration, Faculty faculty) {
-
-    }
-
 
     public double getGPA(Course[] passedCourses) {
         return this.GPA;
@@ -51,18 +46,15 @@ public  final class Student extends Person {
         return this.credits;
     }
 
-
     @Override
     public void getInfo() {
         System.out.println("Student Info: " + this.getName() + " " + this.getSurname() + " " + this.getDateOfBirt());
-
     }
 
     // info about DateOfBirt
     public LocalDate getDateOfBirt() {
-        return DATE_OF_BIRTH;
+        return date;
     }
-
 
     // info about passed  Faculty
     public Faculty getFaculty() {
@@ -73,9 +65,7 @@ public  final class Student extends Person {
         this.faculty = major;
     }
 
-
     // info about passed Scholarship
-
     public Boolean getHasScholarship() {
         return hasScholarship;
     }
@@ -84,12 +74,10 @@ public  final class Student extends Person {
         this.hasScholarship = hasScholarship;
     }
 
-
     // info about semester
     public Integer getSemester() {
         return semester;
     }
-
 
     public void setCredits(Integer credits) {
         this.credits = credits;
@@ -118,7 +106,7 @@ public  final class Student extends Person {
     @Override
     public String toString() {
         return "Student{" +
-                "dateOfBirt=" + DATE_OF_BIRTH +
+                "dateOfBirt=" + date +
                 ", faculty=" + faculty +
                 ", hasScholarship=" + hasScholarship +
                 ", semester=" + semester +

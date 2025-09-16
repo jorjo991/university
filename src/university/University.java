@@ -14,20 +14,16 @@ import java.util.Arrays;
 import java.util.Date;
 
 public class University {
-    private Administration administration= new Administration();
-    private Student [] students;
-    private Professor [] professor;
-    private Course [] course;
-    private Room [] rooms;
+    private Administration administration = new Administration();
+    private Student[] students;
+    private Professor[] professor;
+    private Course[] course;
+    private Room[] rooms;
     private Faculty[] faculties;
-
-
-
 
     public University(Administration administration) {
         this.administration = administration;
     }
-
 
     public Faculty[] getFaculties() {
         return administration.getFacultyRepository().getAll();
@@ -61,11 +57,11 @@ public class University {
         this.professor = professor;
     }
 
-    public Course [] getCourse() {
+    public Course[] getCourse() {
         return administration.getCourseRepository().getAll();
     }
 
-    public void setCourse(Course [] course) {
+    public void setCourse(Course[] course) {
         this.course = course;
     }
 

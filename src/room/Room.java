@@ -7,10 +7,7 @@ public abstract class Room {
     protected  Integer capacity;
     protected  Boolean isAvailable;
 
-
     protected  static  int countRoom;
-
-
 
     public Room(String roomID, Integer capacity, Boolean isAvailable) {
         this.roomID = roomID;
@@ -18,8 +15,6 @@ public abstract class Room {
         this.isAvailable = isAvailable;
         countRoom+=1;
     }
-
-
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -31,7 +26,6 @@ public abstract class Room {
     public int hashCode() {
         return Objects.hash(roomID, capacity, isAvailable);
     }
-
 
     public String getRoomID() {
         return roomID;

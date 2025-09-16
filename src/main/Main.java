@@ -25,8 +25,8 @@ public class Main {
         University university = new University(admin);
 
         // Create Rooms
-        Room room1 = new ExamRoom("101", 30,true); // Room 101, available
-        Room room2 = new ExamRoom("102",35, true); // Room 102, available
+        Room room1 = new ExamRoom("101", 30, true); // Room 101, available
+        Room room2 = new ExamRoom("102", 35, true); // Room 102, available
         university.setRooms(new Room[]{room1, room2});
         System.out.println("Available Rooms: " + Arrays.toString(university.getRooms()));
 
@@ -36,8 +36,7 @@ public class Main {
         admin.registerFaculty(csFaculty);
         admin.registerFaculty(mathFaculty);
 
-        System.out.println("Faculties "+ Arrays.toString(university.getFaculties()));
-
+        System.out.println("Faculties " + Arrays.toString(university.getFaculties()));
 
         // Create Professors
         Professor prof1 = new Professor(101, 45, "Dr. Smith", "Johnson", Gender.MALE, "Algorithms");
@@ -64,21 +63,19 @@ public class Main {
         student1.getInfo();
         student2.getInfo();
 
-
-        CourseService courseService= new CourseService();
-        courseService.registerCourseOnFaculty(javaCourse,csFaculty);
-        courseService.registerCourseOnFaculty(calculusCourse,mathFaculty);
+        CourseService courseService = new CourseService();
+        courseService.registerCourseOnFaculty(javaCourse, csFaculty);
+        courseService.registerCourseOnFaculty(calculusCourse, mathFaculty);
         System.out.println("Courses that belongs faculties");
-        Arrays.stream(university.getCourse()).forEach(x-> System.out.println(x.getBelongsFaculty()));
+        Arrays.stream(university.getCourse()).forEach(x -> System.out.println(x.getBelongsFaculty()));
 
+        StudentService studentService = new StudentService();
+        studentService.registerStudentOnCourse(student1, javaCourse);
+        studentService.registerStudentOnFaculty(student1, csFaculty);
+        studentService.registerStudentOnCourse(student2, calculusCourse);
+        studentService.registerStudentOnFaculty(student2, mathFaculty);
 
-        StudentService studentService= new StudentService();
-        studentService.registerStudentOnCourse(student1,javaCourse);
-        studentService.registerStudentOnFaculty(student1,csFaculty);
-        studentService.registerStudentOnCourse(student2,calculusCourse);
-        studentService.registerStudentOnFaculty(student2,mathFaculty);
-
-        System.out.println("Student "+student1.getName()+"studies"+student1.getFaculty());
+        System.out.println("Student " + student1.getName() + "studies" + student1.getFaculty());
 
         Student[] examStudents = {student1, student2};
         FinalExam finalExam = new FinalExam(examStudents, javaCourse);

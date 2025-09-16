@@ -2,16 +2,12 @@ package administration;
 
 import course.Course;
 import course.Faculty;
-import person.Person;
 import professor.Professor;
 import registration.Registrable;
-import repository.Repository;
 import repository.RepositoryImpl;
 import student.Student;
-
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class Administration {
 

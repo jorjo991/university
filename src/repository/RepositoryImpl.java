@@ -22,7 +22,6 @@ public class RepositoryImpl <T> implements  Repository<T> {
         }
     }
 
-
     @Override
     public T[] getAll() {
         return userList.clone();

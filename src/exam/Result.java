@@ -1,6 +1,5 @@
 package exam;
 
-import administration.Printable;
 import course.Course;
 import student.Student;
 
@@ -9,13 +8,11 @@ public class Result {
     private Course course;
     private double result;
 
-
     public Result(Student student, Course course, double result) {
         this.student = student;
         this.course = course;
         this.result = result;
     }
-
 
     public Student getStudent() {
         return student;
