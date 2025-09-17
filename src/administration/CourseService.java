@@ -2,12 +2,11 @@ package administration;
 
 import course.Course;
 import course.Faculty;
-
 import java.util.Arrays;
 
-public class CourseService implements Printable{
+public class CourseService implements Printable {
 
-    public void registerCourseOnFaculty(Course course, Faculty faculty){
+    public void registerCourseOnFaculty(Course course, Faculty faculty) {
         course.assignFaculty(faculty);
     }
 

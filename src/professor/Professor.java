@@ -8,7 +8,7 @@ import java.util.Arrays;
 public final class Professor extends Person {
     private final String specialization;
     private Faculty[] faculties = new Faculty[0];  //  professor is not teaching any faculty.
-                                                    // He waits for registration
+    // He waits for registration
 
     public Professor(Integer id, Integer age, String name, String surname, Gender gender, String specialization) {
         super(id, age, name, surname, gender);

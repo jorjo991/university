@@ -5,9 +5,12 @@ import administration.CourseService;
 import administration.StudentService;
 import course.Course;
 import course.Faculty;
+import exam.ExamSession;
 import exam.FinalExam;
 import exam.MidtermExam;
 import exam.Result;
+import exception.RegistrationLimitException;
+import exception.RoomUnavailableException;
 import person.Gender;
 import professor.Professor;
 import room.ExamRoom;
@@ -15,6 +18,7 @@ import room.Room;
 import student.Student;
 import university.University;
 
+import java.rmi.StubNotFoundException;
 import java.time.LocalDate;
 import java.util.Arrays;
 
@@ -47,6 +51,10 @@ public class Main {
         prof1.getInfo();
         prof2.getInfo();
 
+        // try to register invalid age professor we should get InvalidAgeException
+        // Professor professorInvalidAge = new Professor(102, 150, "Dr. Lee", "Kim", Gender.FEMALE, "Calculus");
+        //  admin.registerProfessor(professorInvalidAge);
+
         // Create Courses
         Course javaCourse = new Course("Introduction to Java", 6);
         Course calculusCourse = new Course("Calculus I", 6);
@@ -63,28 +71,61 @@ public class Main {
         student1.getInfo();
         student2.getInfo();
 
+        /*try to register same student twice
+        here we get should get Duplicated Error.
+        admin.registerStudent(student2);
+         */
+
         CourseService courseService = new CourseService();
         courseService.registerCourseOnFaculty(javaCourse, csFaculty);
         courseService.registerCourseOnFaculty(calculusCourse, mathFaculty);
         System.out.println("Courses that belongs faculties");
         Arrays.stream(university.getCourse()).forEach(x -> System.out.println(x.getBelongsFaculty()));
 
+
+        // hande to exception
         StudentService studentService = new StudentService();
-        studentService.registerStudentOnCourse(student1, javaCourse);
+        try {
+            studentService.registerStudentOnCourse(student1, javaCourse);
+        } catch (RegistrationLimitException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+
         studentService.registerStudentOnFaculty(student1, csFaculty);
-        studentService.registerStudentOnCourse(student2, calculusCourse);
+        try {
+            studentService.registerStudentOnCourse(student2, calculusCourse);
+        } catch (RegistrationLimitException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+        System.out.println("Student " + student1.getName() + "studies" + student1.getFaculty());
+
+        //register student on math faculty
         studentService.registerStudentOnFaculty(student2, mathFaculty);
 
-        System.out.println("Student " + student1.getName() + "studies" + student1.getFaculty());
+        /*
+        try to register student invalid student with semester number. should get InvalidRegisterException
+        Student studentOverSemester= new Student(1, 20, "Alice", "Smith", Gender.FEMALE, LocalDate.of(2005, 5, 15), true, 9, 12);
+        studentOverSemester.sendRegistrationRequestONCourse(studentService,javaCourse);
+         */
 
         Student[] examStudents = {student1, student2};
         FinalExam finalExam = new FinalExam(examStudents, javaCourse);
         MidtermExam midtermExam = new MidtermExam(examStudents, calculusCourse);
 
+        /*
+        try to start  exam with taken room.Program Should compile RoomUnavailableException
+        Room takenRoom= new ExamRoom("043",50,false);
+        finalExam.startExam(prof1,examStudents,takenRoom);
+        */
+
         // Start and End Final Exam
+        ExamSession examSession = new ExamSession(room1);
         finalExam.startExam(prof1, examStudents, room1);
+        examSession.close();
         System.out.println("Room1 Availability: " + room1.getAvailable());
+
         finalExam.endExam(room1);
+
         System.out.println("Room1 Availability after end: " + room1.getAvailable());
 
         // Get Results

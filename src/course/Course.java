@@ -38,13 +38,7 @@ public final class Course implements Registrable {
 
     @Override
     public String toString() {
-        return "Course{" +
-                "name='" + name + '\'' +
-                ", professorTeacherCourse=" + professorTeacherCourse +
-                ", credit=" + credit +
-                ", students=" + Arrays.toString(students) +
-                ", belongsFaculty=" + belongsFaculty +
-                '}';
+        return "Course{" + "name='" + name + '\'' + ", professorTeacherCourse=" + professorTeacherCourse + ", credit=" + credit + ", students=" + Arrays.toString(students) + ", belongsFaculty=" + belongsFaculty + '}';
     }
 
     @Override

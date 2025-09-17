@@ -7,14 +7,16 @@ import professor.Professor;
 
 import java.util.Arrays;
 
-public class ProfessorService  implements  Printable,ReportAble{
+public class ProfessorService implements Printable, ReportAble {
 
-    public  void registerProfessorOnCourse(Professor professor, Course course){
+    public void registerProfessorOnCourse(Professor professor, Course course) {
         course.registerProfessorOnCourse(professor);
     }
-    public  void registerProfessorOnFaculty(Professor professor, Faculty faculty){
+
+    public void registerProfessorOnFaculty(Professor professor, Faculty faculty) {
         professor.registrationOnFaculty(faculty);
     }
+
     @Override
     public void print(Administration administration) {
         System.out.println(Arrays.toString(administration.getProfessorRepository().getAll()));
@@ -22,7 +24,7 @@ public class ProfessorService  implements  Printable,ReportAble{
 
     @Override
     public void report(Person person) {
-        System.out.println("Report of" +person.getAge()+"  "+person.getSurname());
+        System.out.println("Report of" + person.getAge() + "  " + person.getSurname());
 
     }
     // room for more  functionalities

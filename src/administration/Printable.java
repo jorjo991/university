@@ -2,5 +2,5 @@ package administration;
 
 public interface Printable {
 
-    void  print(Administration administration);
+    void print(Administration administration);
 }

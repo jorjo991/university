@@ -3,18 +3,19 @@ package room;
 import java.util.Objects;
 
 public abstract class Room {
-    protected  String  roomID;
-    protected  Integer capacity;
-    protected  Boolean isAvailable;
+    protected String roomID;
+    protected Integer capacity;
+    protected Boolean isAvailable;
 
-    protected  static  int countRoom;
+    protected static int countRoom;
 
     public Room(String roomID, Integer capacity, Boolean isAvailable) {
         this.roomID = roomID;
         this.capacity = capacity;
         this.isAvailable = isAvailable;
-        countRoom+=1;
+        countRoom += 1;
     }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

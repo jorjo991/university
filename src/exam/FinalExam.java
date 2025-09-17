@@ -1,6 +1,7 @@
 package exam;
 
 import course.Course;
+import exception.RoomUnavailableException;
 import professor.Professor;
 import room.Room;
 import student.Student;
@@ -12,7 +13,8 @@ public class FinalExam extends Exam implements ExamBehavior {
     }
 
     @Override
-    public void startExam(Professor professor, Student[] students, Room room) {
+    public void startExam(Professor professor, Student[] students, Room room) throws RoomUnavailableException {
+        if (!room.getAvailable())throw new RoomUnavailableException("Room is not available");
         if (professor != null && students.length >= 1 && room.getAvailable()) {
             room.setAvailable(false);
             System.out.println("Exam Started Successfully");

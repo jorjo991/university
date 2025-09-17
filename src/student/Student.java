@@ -1,15 +1,14 @@
 package student;
 
-import administration.Administration;
 import administration.StudentService;
 import course.Course;
 import course.Faculty;
+import exception.InvalidRegistrationException;
+import exception.RegistrationLimitException;
 import person.Gender;
 import person.Person;
-
 import java.time.LocalDate;
 import java.util.Arrays;
-
 
 public final class Student extends Person {
     private final LocalDate date;
@@ -30,11 +29,15 @@ public final class Student extends Person {
         countStudent += 1;
     }
 
-    public void sendRegistrationRequestONCourse(StudentService studentService, Course course) {
-        studentService.registerStudentOnCourse(this,course);
+    public void sendRegistrationRequestONCourse(StudentService studentService, Course course) throws InvalidRegistrationException {
+        try {
+            studentService.registerStudentOnCourse(this, course);
+        } catch (RegistrationLimitException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
-    public double getGPA(Course[] passedCourses) {
+    public double getGPA() {
         return this.GPA;
     }
 

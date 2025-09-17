@@ -1,13 +1,11 @@
 package course;
 
-import exam.FinalExam;
 import registration.Registrable;
-
 import java.util.Objects;
 
 public class Faculty implements Registrable {
     private final String name;
-    private  int facultyID;
+    private int facultyID;
 
     public Faculty(String name, int facultyID) {
         this.name = name;

@@ -3,15 +3,9 @@ package university;
 import administration.Administration;
 import course.Course;
 import course.Faculty;
-import exam.Exam;
 import professor.Professor;
-import registration.Registrable;
-import repository.RepositoryImpl;
 import room.Room;
 import student.Student;
-
-import java.util.Arrays;
-import java.util.Date;
 
 public class University {
     private Administration administration = new Administration();

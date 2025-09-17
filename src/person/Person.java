@@ -4,14 +4,13 @@ import registration.Registrable;
 
 import java.util.Objects;
 
-public abstract class Person  implements Registrable {
+public abstract class Person implements Registrable {
     private Integer id;
-    private  Integer age;
-    private  String name;
-    private  String surname;
-    private Gender gender ;
-
-    private static  int countPerson;
+    private Integer age;
+    private String name;
+    private String surname;
+    private Gender gender;
+    private static int countPerson;
 
     public Person(Integer id, Integer age, String name, String surname, Gender gender) {
         this.id = id;
@@ -21,8 +20,7 @@ public abstract class Person  implements Registrable {
         this.gender = gender;
     }
 
-    public  abstract void getInfo();
-
+    public abstract void getInfo();
 
     @Override
     public boolean equals(Object o) {
@@ -36,7 +34,6 @@ public abstract class Person  implements Registrable {
     public int hashCode() {
         return Objects.hash(id, age, name, surname, gender);
     }
-
 
     @Override
     public String toString() {
