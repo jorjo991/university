@@ -1,11 +1,8 @@
 package administration;
 
 import course.Course;
-import course.Faculty;
 import person.Person;
 import professor.Professor;
-
-import java.util.Arrays;
 
 public class ProfessorService implements Printable, ReportAble {
 
@@ -13,13 +10,9 @@ public class ProfessorService implements Printable, ReportAble {
         course.registerProfessorOnCourse(professor);
     }
 
-    public void registerProfessorOnFaculty(Professor professor, Faculty faculty) {
-        professor.registrationOnFaculty(faculty);
-    }
-
     @Override
     public void print(Administration administration) {
-        System.out.println(Arrays.toString(administration.getProfessorRepository().getAll()));
+        System.out.println(administration.getFacultyRepository().getAll());
     }
 
     @Override
@@ -28,5 +21,4 @@ public class ProfessorService implements Printable, ReportAble {
 
     }
     // room for more  functionalities
-
 }

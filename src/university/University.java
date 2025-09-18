@@ -1,69 +1,43 @@
 package university;
 
 import administration.Administration;
-import course.Course;
 import course.Faculty;
 import professor.Professor;
 import room.Room;
-import student.Student;
+
+import java.util.Set;
 
 public class University {
+
     private Administration administration = new Administration();
-    private Student[] students;
-    private Professor[] professor;
-    private Course[] course;
-    private Room[] rooms;
-    private Faculty[] faculties;
+    private Set<Professor> professors;
+    private Set<Room> rooms;
+    private Set<Faculty> faculties;
 
     public University(Administration administration) {
         this.administration = administration;
-    }
-
-    public Faculty[] getFaculties() {
-        return administration.getFacultyRepository().getAll();
-    }
-
-    public void setFaculties(Faculty[] faculties) {
-        this.faculties = faculties;
+        this.professors = administration.getProfessorRepository().getAll();
+        this.faculties = administration.getFacultyRepository().getAll();
     }
 
     public Administration getAdministration() {
         return administration;
     }
 
-    public void setAdministration(Administration administration) {
-        this.administration = administration;
+    public Set<Professor> getProfessors() {
+        return professors;
     }
 
-    public Student[] getStudents() {
-        return administration.getStudentRepository().getAll();
-    }
-
-    public void setStudents(Student[] students) {
-        this.students = students;
-    }
-
-    public Professor[] getProfessor() {
-        return administration.getProfessorRepository().getAll();
-    }
-
-    public void setProfessor(Professor[] professor) {
-        this.professor = professor;
-    }
-
-    public Course[] getCourse() {
-        return administration.getCourseRepository().getAll();
-    }
-
-    public void setCourse(Course[] course) {
-        this.course = course;
-    }
-
-    public Room[] getRooms() {
+    public Set<Room> getRooms() {
         return rooms;
     }
 
-    public void setRooms(Room[] rooms) {
+    public void setRooms(Set<Room> rooms) {
         this.rooms = rooms;
     }
+
+    public Set<Faculty> getFaculties() {
+        return administration.getFacultyRepository().getAll();
+    }
+
 }

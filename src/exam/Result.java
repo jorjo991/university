@@ -4,6 +4,7 @@ import course.Course;
 import student.Student;
 
 public class Result {
+
     private Student student;
     private Course course;
     private double result;
@@ -12,6 +13,15 @@ public class Result {
         this.student = student;
         this.course = course;
         this.result = result;
+    }
+
+    @Override
+    public String toString() {
+        return "Result{" +
+                "student=" + student +
+                ", course=" + course +
+                ", result=" + result +
+                '}';
     }
 
     public Student getStudent() {
@@ -37,4 +47,6 @@ public class Result {
     public void setResult(double result) {
         this.result = result;
     }
+
+
 }

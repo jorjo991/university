@@ -2,37 +2,28 @@ package administration;
 
 import course.Course;
 import course.Faculty;
-import exception.DuplicateEntityException;
 import exception.InvalidAgeException;
 import professor.Professor;
-import registration.Registrable;
 import repository.RepositoryImpl;
 import student.Student;
+
 import java.time.LocalDateTime;
+import java.util.HashSet;
 
 public class Administration {
 
-    private RepositoryImpl<Student> studentRepository = new RepositoryImpl<>(Student.class);
-    private RepositoryImpl<Professor> professorRepository = new RepositoryImpl<>(Professor.class);
-    private RepositoryImpl<Course> courseRepository = new RepositoryImpl<>(Course.class);
-    private RepositoryImpl<Faculty> facultyRepository = new RepositoryImpl<>(Faculty.class);
+    private RepositoryImpl<Student> studentRepository = new RepositoryImpl<>(new HashSet<>());
+    private RepositoryImpl<Professor> professorRepository = new RepositoryImpl<>(new HashSet<>());
+    private RepositoryImpl<Course> courseRepository = new RepositoryImpl<>(new HashSet<>());
+    private RepositoryImpl<Faculty> facultyRepository = new RepositoryImpl<>(new HashSet<>());
 
     static {
         System.out.println("Administration class loaded at " + LocalDateTime.now() + " (+04 timezone)");
     }
 
-    public static boolean isDuplicatePerson(Registrable registrable, Registrable[] registrables) {
-        if (registrables.length <= 1) return false;
-        for (Registrable registrable1 : registrables) {
-            if (registrable1.equals(registrable)) return true;
-        }
-        return false;
-    }
 
     // register Student in university by Administration
-    public void registerStudent(Student student) throws DuplicateEntityException {
-        if (isDuplicatePerson(student, studentRepository.getAll()))
-            throw new DuplicateEntityException("Duplicated Student Detected");
+    public void registerStudent(Student student) {
         if (student == null) throw new NullPointerException();
         studentRepository.register(student);
     }
@@ -40,8 +31,6 @@ public class Administration {
     //register Course in university by Administration
     public void registerCourse(Course course) {
         if (course == null) throw new NullPointerException();
-        if (isDuplicatePerson(course, courseRepository.getAll()))
-            throw new DuplicateEntityException("Duplicated Course Detected");
         courseRepository.register(course);
     }
 
@@ -49,16 +38,12 @@ public class Administration {
     public void registerProfessor(Professor professor) throws InvalidAgeException {
         if (professor == null) throw new NullPointerException();
         if (professor.getAge() >= 100) throw new InvalidAgeException("Invalid Age Detected ");
-        if (isDuplicatePerson(professor, professorRepository.getAll()))
-            throw new DuplicateEntityException("Duplicated Professor Detected");
         professorRepository.register(professor);
     }
 
     //register Faculty in university by Administration
-    public void registerFaculty(Faculty faculty) throws DuplicateEntityException {
+    public void registerFaculty(Faculty faculty) {
         if (faculty == null) throw new NullPointerException();
-        if (isDuplicatePerson(faculty, getFacultyRepository().getAll()))
-            throw new DuplicateEntityException("Duplicated faculties Detected");
         facultyRepository.register(faculty);
     }
 

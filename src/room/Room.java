@@ -3,16 +3,26 @@ package room;
 import java.util.Objects;
 
 public abstract class Room {
-    protected String roomID;
+
+    protected String id;
     protected Integer capacity;
-    protected Boolean isAvailable;
+    protected Boolean available;
 
     protected static int countRoom;
 
-    public Room(String roomID, Integer capacity, Boolean isAvailable) {
-        this.roomID = roomID;
+    //static methods
+    public static int getCountRoom() {
+        return countRoom;
+    }
+
+    public static void setCountRoom(int countRoom) {
+        Room.countRoom = countRoom;
+    }
+
+    public Room(String id, Integer capacity, Boolean available) {
+        this.id = id;
         this.capacity = capacity;
-        this.isAvailable = isAvailable;
+        this.available = available;
         countRoom += 1;
     }
 
@@ -20,20 +30,20 @@ public abstract class Room {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Room room = (Room) o;
-        return Objects.equals(roomID, room.roomID) && Objects.equals(capacity, room.capacity) && Objects.equals(isAvailable, room.isAvailable);
+        return Objects.equals(id, room.id) && Objects.equals(capacity, room.capacity) && Objects.equals(available, room.available);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(roomID, capacity, isAvailable);
+        return Objects.hash(id, capacity, available);
     }
 
-    public String getRoomID() {
-        return roomID;
+    public String getId() {
+        return id;
     }
 
-    public void setRoomID(String roomID) {
-        this.roomID = roomID;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Integer getCapacity() {
@@ -45,18 +55,11 @@ public abstract class Room {
     }
 
     public Boolean getAvailable() {
-        return isAvailable;
+        return available;
     }
 
     public void setAvailable(Boolean available) {
-        isAvailable = available;
+        this.available = available;
     }
 
-    public static int getCountRoom() {
-        return countRoom;
-    }
-
-    public static void setCountRoom(int countRoom) {
-        Room.countRoom = countRoom;
-    }
 }

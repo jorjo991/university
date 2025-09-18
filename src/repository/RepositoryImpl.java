@@ -1,28 +1,22 @@
 package repository;
 
-import java.util.Arrays;
+import java.util.Set;
 
-public class RepositoryImpl <T> implements  Repository<T> {
+public class RepositoryImpl<T> implements Repository<T> {
 
-    private T[] userList;
-    private final Class<T> type;
+    private Set<T> userList;
 
-    @SuppressWarnings("unchecked")
-    public RepositoryImpl(Class<T> type) {
-        this.type = type;
-        this.userList = (T[]) java.lang.reflect.Array.newInstance(type, 0); // Type-safe initialization
+    public RepositoryImpl(Set<T> userList) {
+        this.userList = userList;
     }
 
     @Override
     public void register(T o) {
-        if(userList!=null){
-            userList= Arrays.copyOf(userList,userList.length+1);
-            userList[userList.length-1]=o;
-        }
+        userList.add(o);
     }
 
     @Override
-    public T[] getAll() {
-        return userList.clone();
+    public Set<T> getAll() {
+        return userList;
     }
 }

@@ -1,6 +1,5 @@
 package exam;
 
-
 import course.Course;
 import student.Student;
 

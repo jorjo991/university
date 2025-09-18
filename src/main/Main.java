@@ -2,13 +2,11 @@ package main;
 
 import administration.Administration;
 import administration.CourseService;
+import administration.ProfessorService;
 import administration.StudentService;
 import course.Course;
 import course.Faculty;
-import exam.ExamSession;
-import exam.FinalExam;
-import exam.MidtermExam;
-import exam.Result;
+import exam.*;
 import exception.RegistrationLimitException;
 import exception.RoomUnavailableException;
 import person.Gender;
@@ -23,132 +21,136 @@ import java.time.LocalDate;
 import java.util.Arrays;
 
 public class Main {
+
     public static void main(String[] args) {
-        // Initialize Administration and University
-        Administration admin = new Administration();
-        University university = new University(admin);
 
-        // Create Rooms
-        Room room1 = new ExamRoom("101", 30, true); // Room 101, available
-        Room room2 = new ExamRoom("102", 35, true); // Room 102, available
-        university.setRooms(new Room[]{room1, room2});
-        System.out.println("Available Rooms: " + Arrays.toString(university.getRooms()));
+        Administration administration = new Administration();
+        University university = new University(administration);
 
-        // Create Faculties
-        Faculty csFaculty = new Faculty("Computer Science", 1);
-        Faculty mathFaculty = new Faculty("Mathematics", 2);
-        admin.registerFaculty(csFaculty);
-        admin.registerFaculty(mathFaculty);
+        //professor
+        Professor prof1 = new Professor(1, 45, "Alice", "Smith", Gender.FEMALE, "Computer Science");
+        Professor prof2 = new Professor(2, 50, "Bob", "Johnson", Gender.MALE, "Mathematics");
+        Professor prof3 = new Professor(3, 38, "Clara", "Williams", Gender.FEMALE, "Physics");
 
-        System.out.println("Faculties " + Arrays.toString(university.getFaculties()));
+        administration.registerProfessor(prof1);
+        administration.registerProfessor(prof2);
+        administration.registerProfessor(prof3);
+        //print professors
+        System.out.println("Professors ");
+        System.out.println(university.getProfessors());
+        System.out.println();
 
-        // Create Professors
-        Professor prof1 = new Professor(101, 45, "Dr. Smith", "Johnson", Gender.MALE, "Algorithms");
-        Professor prof2 = new Professor(102, 50, "Dr. Lee", "Kim", Gender.FEMALE, "Calculus");
-        admin.registerProfessor(prof1);
-        admin.registerProfessor(prof2);
-        System.out.println("Registered Professors: " + Arrays.toString(university.getProfessor()));
-        prof1.getInfo();
-        prof2.getInfo();
+        //Courses
+        Course math = new Course("Mathematics", 6);
+        Course cs = new Course("Computer Science", 8);
+        Course physics = new Course("Physics", 5);
 
-        // try to register invalid age professor we should get InvalidAgeException
-        // Professor professorInvalidAge = new Professor(102, 150, "Dr. Lee", "Kim", Gender.FEMALE, "Calculus");
-        //  admin.registerProfessor(professorInvalidAge);
+        administration.registerCourse(math);
+        administration.registerCourse(cs);
+        administration.registerCourse(physics);
 
-        // Create Courses
-        Course javaCourse = new Course("Introduction to Java", 6);
-        Course calculusCourse = new Course("Calculus I", 6);
-        admin.registerCourse(javaCourse);
-        admin.registerCourse(calculusCourse);
-        System.out.println("Registered Courses: " + Arrays.toString(university.getCourse()));
+        //print Courses
+        System.out.println("Courses");
+        System.out.println(administration.getCourseRepository().getAll());
+        System.out.println();
 
-        // Create Students
-        Student student1 = new Student(1, 20, "Alice", "Smith", Gender.FEMALE, LocalDate.of(2005, 5, 15), true, 3, 12);
-        Student student2 = new Student(2, 22, "Bob", "Johnson", Gender.MALE, LocalDate.of(2003, 8, 22), false, 5, 18);
-        admin.registerStudent(student1);
-        admin.registerStudent(student2);
-        System.out.println("Registered Students: " + Arrays.toString(university.getStudents()));
-        student1.getInfo();
-        student2.getInfo();
+        //Students
+        Student alice = new Student(1, 20, "Alice", "Brown", Gender.FEMALE, LocalDate.of(2005, 1, 10), true, 2, 30);
+        Student bob = new Student(2, 21, "Bob", "Smith", Gender.MALE, LocalDate.of(2004, 3, 15), false, 3, 40);
+        Student clara = new Student(3, 22, "Clara", "Johnson", Gender.FEMALE, LocalDate.of(2003, 5, 20), true, 4, 50);
+        Student david = new Student(4, 19, "David", "Williams", Gender.MALE, LocalDate.of(2006, 7, 25), false, 1, 20);
+        Student eva = new Student(5, 23, "Eva", "Taylor", Gender.FEMALE, LocalDate.of(2002, 9, 30), true, 5, 60);
+        Student frank = new Student(6, 20, "Frank", "Miller", Gender.MALE, LocalDate.of(2005, 11, 12), false, 2, 35);
+        Student grace = new Student(7, 21, "Grace", "Davis", Gender.FEMALE, LocalDate.of(2004, 2, 8), true, 3, 45);
+        Student henry = new Student(8, 22, "Henry", "Wilson", Gender.MALE, LocalDate.of(2003, 4, 18), false, 4, 55);
+        Student isabella = new Student(9, 19, "Isabella", "Moore", Gender.FEMALE, LocalDate.of(2006, 6, 22), true, 1, 25);
+        Student jack = new Student(10, 23, "Jack", "Taylor", Gender.MALE, LocalDate.of(2002, 8, 14), false, 5, 65);
 
-        /*try to register same student twice
-        here we get should get Duplicated Error.
-        admin.registerStudent(student2);
-         */
+        //register students in university
+        administration.registerStudent(alice);
+        administration.registerStudent(bob);
+        administration.registerStudent(clara);
+        administration.registerStudent(david);
+        administration.registerStudent(eva);
+        administration.registerStudent(frank);
+        administration.registerStudent(grace);
+        administration.registerStudent(henry);
+        administration.registerStudent(isabella);
+        administration.registerStudent(jack);
 
-        CourseService courseService = new CourseService();
-        courseService.registerCourseOnFaculty(javaCourse, csFaculty);
-        courseService.registerCourseOnFaculty(calculusCourse, mathFaculty);
-        System.out.println("Courses that belongs faculties");
-        Arrays.stream(university.getCourse()).forEach(x -> System.out.println(x.getBelongsFaculty()));
+        // print students
+        System.out.println("Students");
+        System.out.println(administration.getStudentRepository().getAll());
+        System.out.println();
 
+        //Faculties
+        Faculty scienceFaculty = new Faculty("Science Faculty", 1);
+        Faculty engineeringFaculty = new Faculty("Engineering Faculty", 2);
 
-        // hande to exception
+        //register faculties
+        administration.registerFaculty(scienceFaculty);
+        administration.registerFaculty(engineeringFaculty);
+
+        // register student on course
+
         StudentService studentService = new StudentService();
         try {
-            studentService.registerStudentOnCourse(student1, javaCourse);
-        } catch (RegistrationLimitException e) {
-            throw new RuntimeException(e.getMessage());
+            studentService.registerStudentOnCourse(alice, math);
+            studentService.registerStudentOnCourse(bob, math);
+            studentService.registerStudentOnCourse(clara, math);
+
+            studentService.registerStudentOnCourse(david, cs);
+            studentService.registerStudentOnCourse(eva, cs);
+            studentService.registerStudentOnCourse(frank, cs);
+            studentService.registerStudentOnCourse(grace, cs);
+
+            studentService.registerStudentOnCourse(henry, physics);
+            studentService.registerStudentOnCourse(isabella, physics);
+            studentService.registerStudentOnCourse(jack, physics);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
 
-        studentService.registerStudentOnFaculty(student1, csFaculty);
-        try {
-            studentService.registerStudentOnCourse(student2, calculusCourse);
-        } catch (RegistrationLimitException e) {
-            throw new RuntimeException(e.getMessage());
-        }
-        System.out.println("Student " + student1.getName() + "studies" + student1.getFaculty());
+        CourseService courseService = new CourseService();
 
-        //register student on math faculty
-        studentService.registerStudentOnFaculty(student2, mathFaculty);
+        courseService.registerCourseOnFaculty(math, scienceFaculty);
+        courseService.registerCourseOnFaculty(cs, scienceFaculty);
+        courseService.registerCourseOnFaculty(physics, engineeringFaculty);
 
-        /*
-        try to register student invalid student with semester number. should get InvalidRegisterException
-        Student studentOverSemester= new Student(1, 20, "Alice", "Smith", Gender.FEMALE, LocalDate.of(2005, 5, 15), true, 9, 12);
-        studentOverSemester.sendRegistrationRequestONCourse(studentService,javaCourse);
-         */
+        ProfessorService professorService = new ProfessorService();
 
-        Student[] examStudents = {student1, student2};
-        FinalExam finalExam = new FinalExam(examStudents, javaCourse);
-        MidtermExam midtermExam = new MidtermExam(examStudents, calculusCourse);
+        //register professor on course
+        professorService.registerProfessorOnCourse(prof1, math);
+        professorService.registerProfessorOnCourse(prof2, cs);
+        professorService.registerProfessorOnCourse(prof3, physics);
 
-        /*
-        try to start  exam with taken room.Program Should compile RoomUnavailableException
-        Room takenRoom= new ExamRoom("043",50,false);
-        finalExam.startExam(prof1,examStudents,takenRoom);
-        */
+        //print  one faculty and its courses and students
+        System.out.println("Faculty " + scienceFaculty.getName());
+        System.out.println();
+        for (Course course : scienceFaculty.getCourses()) {
+            System.out.println("Course " + course.getName());
+            System.out.println("Professor teaches course " + course.getProfessorTeacherCourse().getName());
 
-        // Start and End Final Exam
-        ExamSession examSession = new ExamSession(room1);
-        finalExam.startExam(prof1, examStudents, room1);
-        examSession.close();
-        System.out.println("Room1 Availability: " + room1.getAvailable());
-
-        finalExam.endExam(room1);
-
-        System.out.println("Room1 Availability after end: " + room1.getAvailable());
-
-        // Get Results
-        Result[] finalResults = finalExam.getResults(javaCourse, examStudents);
-        System.out.println("Final Exam Results: ");
-        for (Result result : finalResults) {
-            System.out.println(result.getStudent().getName() + ": " + result.getResult());
+            for (Student student : course.getStudents()) {
+                System.out.println("Student " + student.getName());
+            }
+            System.out.println();
         }
 
-        // Start and End Midterm Exam
-        midtermExam.startExam(prof2, examStudents, room2);
-        System.out.println("Room2 Availability: " + room2.getAvailable());
-        midtermExam.endExam(room2);
-        System.out.println("Room2 Availability after end: " + room2.getAvailable());
+        //create Exam
+        ExamRoom room101 = new ExamRoom("Room101", 30, true);
+        ExamRoom room102 = new ExamRoom("Room102", 50, true);
 
-        // Get Results
-        Result[] midtermResults = midtermExam.getResults(calculusCourse, examStudents);
-        System.out.println("Midterm Exam Results: ");
-        for (Result result : midtermResults) {
-            System.out.println(result.getStudent().getName() + ": " + result.getResult());
+        Student[] finalExamStudents = new Student[]{alice, bob, clara};
+        FinalExam exam = new FinalExam(finalExamStudents, math);
+        exam.startExam(prof1, finalExamStudents, room101);
+        exam.endExam(room101);
+        System.out.println("Exam result");
+        Result[] results = exam.getResults(math, finalExamStudents);
+        for (Result result : results) {
+            System.out.println(result.getStudent().getName() + " " + result.getCourse().getName() +
+                    " " + result.getResult());
         }
 
-        // print report
-        studentService.report(student1);
     }
 }

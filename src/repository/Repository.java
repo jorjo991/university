@@ -1,7 +1,10 @@
 package repository;
 
-public interface Repository <T>{
+import java.util.Set;
 
-    void register (T t);
-    T [] getAll();
+public interface Repository<T> {
+
+    void register(T t);
+
+    Set<T> getAll();
 }

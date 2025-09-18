@@ -1,34 +1,31 @@
 package course;
 
 import registration.Registrable;
+
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public class Faculty implements Registrable {
+
     private final String name;
-    private int facultyID;
+    private int id;
+    private Set<Course> courses = new HashSet<>();
 
-    public Faculty(String name, int facultyID) {
+    public Faculty(String name, int id) {
         this.name = name;
-        this.facultyID = facultyID;
+        this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getFacultyID() {
-        return facultyID;
-    }
-
-    public void setFacultyID(int facultyID) {
-        this.facultyID = facultyID;
+    public void addCourseOnFaculty(Course course) {
+        this.courses.add(course);
     }
 
     @Override
     public String toString() {
         return "Faculty{" +
                 "name='" + name + '\'' +
-                ", facultyID=" + facultyID +
+                ", facultyID=" + id +
                 '}';
     }
 
@@ -36,11 +33,31 @@ public class Faculty implements Registrable {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Faculty faculty = (Faculty) o;
-        return facultyID == faculty.facultyID && Objects.equals(name, faculty.name);
+        return id == faculty.id && Objects.equals(name, faculty.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, facultyID);
+        return Objects.hash(name, id);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Set<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
     }
 }
