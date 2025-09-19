@@ -21,7 +21,6 @@ public class Administration {
         System.out.println("Administration class loaded at " + LocalDateTime.now() + " (+04 timezone)");
     }
 
-
     // register Student in university by Administration
     public void registerStudent(Student student) {
         if (student == null) throw new NullPointerException();
@@ -46,7 +45,6 @@ public class Administration {
         if (faculty == null) throw new NullPointerException();
         facultyRepository.register(faculty);
     }
-
 
     public RepositoryImpl<Student> getStudentRepository() {
         return studentRepository;

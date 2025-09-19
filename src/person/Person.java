@@ -5,12 +5,14 @@ import registration.Registrable;
 import java.util.Objects;
 
 public abstract class Person implements Registrable {
+
+    private static int countPerson;
+
     private Integer id;
     private Integer age;
     private String name;
     private String surname;
     private Gender gender;
-    private static int countPerson;
 
     public Person(Integer id, Integer age, String name, String surname, Gender gender) {
         this.id = id;

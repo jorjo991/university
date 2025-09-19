@@ -1,9 +1,6 @@
 package main;
 
-import administration.Administration;
-import administration.CourseService;
-import administration.ProfessorService;
-import administration.StudentService;
+import administration.*;
 import course.Course;
 import course.Faculty;
 import exam.*;
@@ -25,34 +22,17 @@ public class Main {
     public static void main(String[] args) {
 
         Administration administration = new Administration();
-        University university = new University(administration);
+        University university = new University("KIU");
 
         //professor
         Professor prof1 = new Professor(1, 45, "Alice", "Smith", Gender.FEMALE, "Computer Science");
         Professor prof2 = new Professor(2, 50, "Bob", "Johnson", Gender.MALE, "Mathematics");
         Professor prof3 = new Professor(3, 38, "Clara", "Williams", Gender.FEMALE, "Physics");
 
-        administration.registerProfessor(prof1);
-        administration.registerProfessor(prof2);
-        administration.registerProfessor(prof3);
-        //print professors
-        System.out.println("Professors ");
-        System.out.println(university.getProfessors());
-        System.out.println();
-
         //Courses
         Course math = new Course("Mathematics", 6);
         Course cs = new Course("Computer Science", 8);
         Course physics = new Course("Physics", 5);
-
-        administration.registerCourse(math);
-        administration.registerCourse(cs);
-        administration.registerCourse(physics);
-
-        //print Courses
-        System.out.println("Courses");
-        System.out.println(administration.getCourseRepository().getAll());
-        System.out.println();
 
         //Students
         Student alice = new Student(1, 20, "Alice", "Brown", Gender.FEMALE, LocalDate.of(2005, 1, 10), true, 2, 30);
@@ -66,30 +46,13 @@ public class Main {
         Student isabella = new Student(9, 19, "Isabella", "Moore", Gender.FEMALE, LocalDate.of(2006, 6, 22), true, 1, 25);
         Student jack = new Student(10, 23, "Jack", "Taylor", Gender.MALE, LocalDate.of(2002, 8, 14), false, 5, 65);
 
-        //register students in university
-        administration.registerStudent(alice);
-        administration.registerStudent(bob);
-        administration.registerStudent(clara);
-        administration.registerStudent(david);
-        administration.registerStudent(eva);
-        administration.registerStudent(frank);
-        administration.registerStudent(grace);
-        administration.registerStudent(henry);
-        administration.registerStudent(isabella);
-        administration.registerStudent(jack);
-
-        // print students
-        System.out.println("Students");
-        System.out.println(administration.getStudentRepository().getAll());
-        System.out.println();
-
         //Faculties
         Faculty scienceFaculty = new Faculty("Science Faculty", 1);
         Faculty engineeringFaculty = new Faculty("Engineering Faculty", 2);
 
-        //register faculties
-        administration.registerFaculty(scienceFaculty);
-        administration.registerFaculty(engineeringFaculty);
+        FacultyService facultyService = new FacultyService();
+        facultyService.registerFacultyOnUniversity(scienceFaculty, university);
+        facultyService.registerFacultyOnUniversity(engineeringFaculty, university);
 
         // register student on course
 
@@ -124,17 +87,20 @@ public class Main {
         professorService.registerProfessorOnCourse(prof2, cs);
         professorService.registerProfessorOnCourse(prof3, physics);
 
-        //print  one faculty and its courses and students
-        System.out.println("Faculty " + scienceFaculty.getName());
-        System.out.println();
-        for (Course course : scienceFaculty.getCourses()) {
-            System.out.println("Course " + course.getName());
-            System.out.println("Professor teaches course " + course.getProfessorTeacherCourse().getName());
-
-            for (Student student : course.getStudents()) {
-                System.out.println("Student " + student.getName());
-            }
+        //print all faculties ->courses-> students and professor
+        System.out.println(university.getName());
+        for (Faculty faculty : university.getFaculties()) {
+            System.out.println("Faculty: " + faculty.getName());
             System.out.println();
+            for (Course course : scienceFaculty.getCourses()) {
+                System.out.println("Course: " + course.getName());
+                System.out.println("Professor teaches course: " + course.getProfessorTeacherCourse().getName());
+
+                for (Student student : course.getStudents()) {
+                    System.out.println("Student: " + student.getName());
+                }
+                System.out.println();
+            }
         }
 
         //create Exam

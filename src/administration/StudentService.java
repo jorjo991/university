@@ -1,13 +1,10 @@
 package administration;
 
 import course.Course;
-import course.Faculty;
 import exception.InvalidRegistrationException;
 import exception.RegistrationLimitException;
 import person.Person;
 import student.Student;
-
-import java.util.Arrays;
 
 public class StudentService implements Printable, ReportAble {
 

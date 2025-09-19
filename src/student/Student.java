@@ -67,7 +67,6 @@ public final class Student extends Person {
         this.credits = credits;
     }
 
-
     public void setSemester(Integer semester) {
         this.semester = semester;
     }

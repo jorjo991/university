@@ -1,31 +1,25 @@
 package university;
 
-import administration.Administration;
 import course.Faculty;
-import professor.Professor;
 import room.Room;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class University {
 
-    private Administration administration = new Administration();
-    private Set<Professor> professors;
+    private String name;
+    private String location;
+    private int establishedYear;
+    private String accreditation;
+    private String rector;
     private Set<Room> rooms;
     private Set<Faculty> faculties;
 
-    public University(Administration administration) {
-        this.administration = administration;
-        this.professors = administration.getProfessorRepository().getAll();
-        this.faculties = administration.getFacultyRepository().getAll();
-    }
-
-    public Administration getAdministration() {
-        return administration;
-    }
-
-    public Set<Professor> getProfessors() {
-        return professors;
+    public University(String name) {
+        this.name = name;
+        faculties = new HashSet<>();
+        rooms = new HashSet<>();
     }
 
     public Set<Room> getRooms() {
@@ -37,7 +31,50 @@ public class University {
     }
 
     public Set<Faculty> getFaculties() {
-        return administration.getFacultyRepository().getAll();
+        return faculties;
     }
 
+    public void setFaculties(Set<Faculty> faculties) {
+        this.faculties = faculties;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public int getEstablishedYear() {
+        return establishedYear;
+    }
+
+    public void setEstablishedYear(int establishedYear) {
+        this.establishedYear = establishedYear;
+    }
+
+    public String getAccreditation() {
+        return accreditation;
+    }
+
+    public void setAccreditation(String accreditation) {
+        this.accreditation = accreditation;
+    }
+
+    public String getRector() {
+        return rector;
+    }
+
+    public void setRector(String rector) {
+        this.rector = rector;
+    }
 }
