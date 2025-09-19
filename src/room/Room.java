@@ -4,20 +4,10 @@ import java.util.Objects;
 
 public abstract class Room {
 
+    protected static int countRoom;
     protected String id;
     protected Integer capacity;
     protected Boolean available;
-
-    protected static int countRoom;
-
-    //static methods
-    public static int getCountRoom() {
-        return countRoom;
-    }
-
-    public static void setCountRoom(int countRoom) {
-        Room.countRoom = countRoom;
-    }
 
     public Room(String id, Integer capacity, Boolean available) {
         this.id = id;
@@ -60,6 +50,15 @@ public abstract class Room {
 
     public void setAvailable(Boolean available) {
         this.available = available;
+    }
+
+    //static methods
+    public static int getCountRoom() {
+        return countRoom;
+    }
+
+    public static void setCountRoom(int countRoom) {
+        Room.countRoom = countRoom;
     }
 
 }

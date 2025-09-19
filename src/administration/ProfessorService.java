@@ -6,7 +6,7 @@ import professor.Professor;
 
 public class ProfessorService implements Printable, ReportAble {
 
-    public void registerProfessorOnCourse(Professor professor, Course course) {
+    public final void registerProfessorOnCourse(Professor professor, Course course) {
         course.registerProfessorOnCourse(professor);
     }
 

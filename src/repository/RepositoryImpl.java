@@ -1,12 +1,12 @@
 package repository;
 
-import java.util.Set;
+import java.util.List;
 
 public class RepositoryImpl<T> implements Repository<T> {
 
-    private Set<T> userList;
+    private List<T> userList;
 
-    public RepositoryImpl(Set<T> userList) {
+    public RepositoryImpl(List<T> userList) {
         this.userList = userList;
     }
 
@@ -16,7 +16,15 @@ public class RepositoryImpl<T> implements Repository<T> {
     }
 
     @Override
-    public Set<T> getAll() {
+    public List<T> getAll() {
+        return getUserList();
+    }
+
+    public List<T> getUserList() {
         return userList;
+    }
+
+    public void setUserList(List<T> userList) {
+        this.userList = userList;
     }
 }

@@ -4,7 +4,8 @@ import course.Faculty;
 import university.University;
 
 public class FacultyService implements Printable {
-    public void registerFacultyOnUniversity(Faculty faculty, University university) {
+
+    public final void registerFacultyOnUniversity(Faculty faculty, University university) {
         university.getFaculties().add(faculty);
     }
 

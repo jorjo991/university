@@ -86,4 +86,9 @@ public final class Course implements Registrable {
     public static void setCountCourse(int countCourse) {
         Course.countCourse = countCourse;
     }
+
+    @Override
+    public void register() {
+
+    }
 }

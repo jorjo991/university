@@ -8,7 +8,7 @@ import student.Student;
 
 public class StudentService implements Printable, ReportAble {
 
-    public void registerStudentOnCourse(Student student, Course course) throws RegistrationLimitException, InvalidRegistrationException {
+    public final void registerStudentOnCourse(Student student, Course course) throws RegistrationLimitException, InvalidRegistrationException {
         if (student.getSemester() > 8)
             throw new InvalidRegistrationException("Student is not able to register this course");
         if (course.getStudents().size() > 50) throw new RegistrationLimitException("Registration limit Exceeded");
@@ -22,7 +22,7 @@ public class StudentService implements Printable, ReportAble {
     }
 
     @Override
-    public void report(Person person) {
+    public final void report(Person person) {
         System.out.println("Report of " + person.getName() + " " + person.getSurname());
 
     }

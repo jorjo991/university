@@ -36,5 +36,4 @@ public class FinalExam extends Exam implements ExamBehavior {
         }
         return results;
     }
-
 }

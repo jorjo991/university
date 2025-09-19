@@ -6,27 +6,27 @@ import room.Room;
 public class ExamSession implements AutoCloseable {
 
     private final Room room;
-    private boolean isActive;
+    private boolean active;
 
     public ExamSession(Room room) {
         if (room == null || !room.getAvailable()) {
             throw new RoomUnavailableException("Room " + (room != null ? room.getId() : "null") + " is not available");
         }
         this.room = room;
-        this.isActive = true;
+        this.active = true;
         System.out.println("Exam session started in Room " + room.getId() + " at " + java.time.LocalDateTime.now() + " (+04 timezone)");
     }
 
     public void conductExam() {
-        if (!isActive) throw new IllegalStateException("Exam session is not active");
+        if (!active) throw new IllegalStateException("Exam session is not active");
         System.out.println("Exam conducted in Room " + room.getId());
     }
 
     @Override
     public void close() {
-        if (isActive) {
+        if (active) {
             room.setAvailable(true);
-            isActive = false;
+            active = false;
             System.out.println("Exam session closed in Room " + room.getId() + " at " + java.time.LocalDateTime.now() + " (+04 timezone)");
         }
     }

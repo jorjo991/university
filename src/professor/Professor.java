@@ -21,4 +21,8 @@ public final class Professor extends Person {
         return specialization;
     }
 
+    @Override
+    public void register() {
+        System.out.println(this.getName()+"is register");
+    }
 }

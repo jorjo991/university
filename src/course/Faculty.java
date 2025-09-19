@@ -60,4 +60,9 @@ public class Faculty implements Registrable {
     public void setCourses(Set<Course> courses) {
         this.courses = courses;
     }
+
+    @Override
+    public void register() {
+        System.out.println(this.getName() + "is register As a faculty");
+    }
 }

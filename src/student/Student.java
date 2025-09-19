@@ -89,4 +89,9 @@ public final class Student extends Person {
     public static void setCountStudent(int countStudent) {
         Student.countStudent = countStudent;
     }
+
+    @Override
+    public void register() {
+        System.out.println(this.getName() + "ise register as student");
+    }
 }

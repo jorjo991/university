@@ -4,18 +4,13 @@ import administration.*;
 import course.Course;
 import course.Faculty;
 import exam.*;
-import exception.RegistrationLimitException;
-import exception.RoomUnavailableException;
 import person.Gender;
 import professor.Professor;
 import room.ExamRoom;
-import room.Room;
 import student.Student;
 import university.University;
 
-import java.rmi.StubNotFoundException;
 import java.time.LocalDate;
-import java.util.Arrays;
 
 public class Main {
 
@@ -87,6 +82,40 @@ public class Main {
         professorService.registerProfessorOnCourse(prof2, cs);
         professorService.registerProfessorOnCourse(prof3, physics);
 
+        //register student, professor, course and faculties
+        try {
+            // Register professors
+            administration.registerProfessor(prof1);
+            administration.registerProfessor(prof2);
+            administration.registerProfessor(prof3);
+
+            // Register courses
+            administration.registerCourse(math);
+            administration.registerCourse(cs);
+            administration.registerCourse(physics);
+
+            // Register students
+            administration.registerStudent(alice);
+            administration.registerStudent(bob);
+            administration.registerStudent(clara);
+            administration.registerStudent(david);
+            administration.registerStudent(eva);
+            administration.registerStudent(frank);
+            administration.registerStudent(grace);
+            administration.registerStudent(henry);
+            administration.registerStudent(isabella);
+            administration.registerStudent(jack);
+
+            // Register faculties
+            administration.registerFaculty(scienceFaculty);
+            administration.registerFaculty(engineeringFaculty);
+
+        } catch (RuntimeException e) {
+            System.out.println("Error registering professor: " + e.getMessage());
+        }
+
+        System.out.println(administration.getStudentRepository().getAll());
+
         //print all faculties ->courses-> students and professor
         System.out.println(university.getName());
         for (Faculty faculty : university.getFaculties()) {
@@ -114,9 +143,16 @@ public class Main {
         System.out.println("Exam result");
         Result[] results = exam.getResults(math, finalExamStudents);
         for (Result result : results) {
-            System.out.println(result.getStudent().getName() + " " + result.getCourse().getName() +
-                    " " + result.getResult());
+            System.out.println(result.getStudent().getName() + " " + result.getCourse().getName() + " " + result.getResult());
         }
 
+        //print all student at university
+        studentService.print(administration);
+
+        //report about one student
+        studentService.report(bob);
+
+        //print course
+        courseService.print(administration);
     }
 }
