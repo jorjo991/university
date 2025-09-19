@@ -1,12 +1,14 @@
 package administration;
 
 import course.Course;
+import exception.InvalidAgeException;
 import person.Person;
 import professor.Professor;
 
-public class ProfessorService implements Printable, ReportAble {
+public class ProfessorService implements Printable, Reportable {
 
     public final void registerProfessorOnCourse(Professor professor, Course course) {
+        if (professor.getAge() > 70) throw new InvalidAgeException("Professor age is not Accepted");
         course.registerProfessorOnCourse(professor);
     }
 

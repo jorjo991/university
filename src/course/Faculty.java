@@ -9,10 +9,10 @@ import java.util.Set;
 public class Faculty implements Registrable {
 
     private final String name;
-    private int id;
+    private Long id;
     private Set<Course> courses = new HashSet<>();
 
-    public Faculty(String name, int id) {
+    public Faculty(String name, Long id) {
         this.name = name;
         this.id = id;
     }
@@ -45,11 +45,11 @@ public class Faculty implements Registrable {
         return name;
     }
 
-    public int getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

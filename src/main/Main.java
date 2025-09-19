@@ -42,8 +42,8 @@ public class Main {
         Student jack = new Student(10, 23, "Jack", "Taylor", Gender.MALE, LocalDate.of(2002, 8, 14), false, 5, 65);
 
         //Faculties
-        Faculty scienceFaculty = new Faculty("Science Faculty", 1);
-        Faculty engineeringFaculty = new Faculty("Engineering Faculty", 2);
+        Faculty scienceFaculty = new Faculty("Science Faculty", 1L);
+        Faculty engineeringFaculty = new Faculty("Engineering Faculty", 2L);
 
         FacultyService facultyService = new FacultyService();
         facultyService.registerFacultyOnUniversity(scienceFaculty, university);

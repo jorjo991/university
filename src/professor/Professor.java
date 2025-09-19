@@ -23,6 +23,6 @@ public final class Professor extends Person {
 
     @Override
     public void register() {
-        System.out.println(this.getName()+"is register");
+        System.out.println(this.getName() + "is register");
     }
 }

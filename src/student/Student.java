@@ -32,6 +32,8 @@ public final class Student extends Person {
             studentService.registerStudentOnCourse(this, course);
         } catch (RegistrationLimitException e) {
             System.out.println(e.getMessage());
+        } finally {
+            System.out.println("Student tried to Register");
         }
     }
 

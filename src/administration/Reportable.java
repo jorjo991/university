@@ -2,7 +2,7 @@ package administration;
 
 import person.Person;
 
-public interface ReportAble {
+public interface Reportable {
 
     void report(Person person);
 }

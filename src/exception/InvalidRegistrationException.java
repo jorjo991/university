@@ -1,6 +1,7 @@
 package exception;
 
 public class InvalidRegistrationException extends RuntimeException {
+
     public InvalidRegistrationException() {
     }
 
