@@ -1,0 +1,41 @@
+package com.solvd.administraion;
+
+import com.solvd.course.Course;
+import com.solvd.course.Faculty;
+import com.solvd.exception.DuplicateEntityException;
+import com.solvd.lamdafucntion.AverageCalculator;
+import com.solvd.student.Student;
+
+import java.util.List;
+import java.util.function.Predicate;
+
+public class CourseService implements Printable {
+
+    public void registerCourseOnFaculty(Course course, Faculty faculty) {
+        if (faculty.getCourses().contains(course)) throw new DuplicateEntityException("Duplicated Course Detected");
+        faculty.addCourseOnFaculty(course);
+    }
+
+    @Override
+    public void print(Administration administration) {
+        System.out.println(administration.getCourseRepository().getAll());
+    }
+
+    public double averageStudentAgeOnCourse(AverageCalculator averageCalculator, Course course) {
+        if (course != null && !course.getStudents().isEmpty()) {
+            List<Student> studentList = course.getStudents();
+            studentList = studentList.stream().
+                    filter(x -> x.getAge() > 0).toList();
+            return averageCalculator.averageAge(studentList);
+        }
+        return 0;
+    }
+
+    public boolean isCourseAvailable(Course course, Predicate<Course> predicate) {
+        if (course != null && !course.getStudents().isEmpty()) {
+            return predicate.test(course);
+        }
+        return false;
+    }
+
+}
