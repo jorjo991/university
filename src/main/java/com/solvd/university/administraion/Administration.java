@@ -132,5 +132,6 @@ public class Administration {
         return professors.stream().
                 mapToInt(professor -> countRank.countRankOfProfessors(professorRank, professor)).
                 sum();
+
     }
 }

@@ -1,13 +1,14 @@
-package com.solvd.administraion;
+package com.solvd.university;
 
 class AdministrationTest {
 
     @org.junit.jupiter.api.Test
     void isDuplication() {
+
     }
 
     @org.junit.jupiter.api.Test
-    void registerStudent() {
+    void registerStudentTest() {
     }
 
     @org.junit.jupiter.api.Test
