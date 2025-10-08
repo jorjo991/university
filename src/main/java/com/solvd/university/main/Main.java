@@ -137,6 +137,8 @@ public class Main {
         administration.registerFaculty(engineeringFaculty);
 
         LOGGER.info("size{}", administration.getStudentRepository().getAll().size());
+        LOGGER.info("name of first student {}", administration.getStudentRepository().getAll().getFirst());
+
 
         //print all faculties ->courses-> students and professor
         LOGGER.info(university.getName());
