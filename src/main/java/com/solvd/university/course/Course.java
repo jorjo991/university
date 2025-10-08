@@ -1,15 +1,19 @@
 package com.solvd.university.course;
 
+import com.solvd.university.administraion.CourseService;
 import com.solvd.university.lamdafucntion.CourseFilter;
 import com.solvd.university.professor.Professor;
 import com.solvd.university.registration.Registrable;
 import com.solvd.university.student.Student;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.*;
 
 public final class Course implements Registrable {
 
     private static int countCourse;
+    private static final Logger LOGGER = LogManager.getLogger(Course.class.getName());
 
     private final String name;
     private Professor professorTeacherCourse;
@@ -38,7 +42,7 @@ public final class Course implements Registrable {
 
     @Override
     public void register() {
-        System.out.println("Course" + this.getName() + " is Registered");
+        LOGGER.info("Course" + this.getName() + " is Registered");
 
     }
 

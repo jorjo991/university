@@ -4,12 +4,17 @@ import com.solvd.university.course.Course;
 import com.solvd.university.exception.InvalidAgeException;
 import com.solvd.university.professor.Professor;
 import com.solvd.university.professor.ProfessorRank;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.*;
 
 public class ProfessorService implements Printable, Reportable<Professor> {
 
     private Map<Professor, List<Course>> professorTeachesCourses = new HashMap<>();
+
+    private static final Logger LOGGER = LogManager.getLogger(ProfessorService.class.getName());
+
 
     public final void registerProfessorOnCourse(Professor professor, Course course) {
         if (professor.getAge() > 70) throw new InvalidAgeException("Professor age is not Accepted");
@@ -22,12 +27,12 @@ public class ProfessorService implements Printable, Reportable<Professor> {
 
     @Override
     public void print(Administration administration) {
-        System.out.println(administration.getFacultyRepository().getAll());
+        LOGGER.info(administration.getFacultyRepository().getAll());
     }
 
     @Override
     public void report(Professor person) {
-        System.out.println("Report of " + person.getName() + "  " + person.getSurname());
+        LOGGER.info("Report of " + person.getName() + "  " + person.getSurname());
 
     }
 

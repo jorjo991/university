@@ -1,10 +1,16 @@
 package com.solvd.university.course;
 
+import com.solvd.university.administraion.CourseService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public enum CourseStatus {
 
     OPEN(true, "Course is open for registration"),
     IN_PROGRESS(false, "Course is in progress"),
     CLOSED(false, "Course is closed");
+
+    private static final Logger LOGGER = LogManager.getLogger(CourseStatus.class.getName());
 
     private final boolean isRegistrable;
     private final String description;
@@ -23,6 +29,6 @@ public enum CourseStatus {
     }
 
     public void updateStatus(CourseStatus newStatus) {
-        System.out.println("Updating status from " + this + " to " + newStatus);
+        LOGGER.info("Updating status from {} to {}", this, newStatus);
     }
 }

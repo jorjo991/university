@@ -1,10 +1,15 @@
 package com.solvd.university.course;
 
+import com.solvd.university.administraion.CourseService;
 import com.solvd.university.registration.Registrable;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.*;
 
 public class Faculty implements Registrable {
+
+    private static final Logger LOGGER = LogManager.getLogger(Faculty.class.getName());
 
     private final String name;
     private Long id;
@@ -61,6 +66,6 @@ public class Faculty implements Registrable {
 
     @Override
     public void register() {
-        System.out.println(this.getName() + "is register As a faculty");
+        LOGGER.info("{}is register As a faculty", this.getName());
     }
 }
