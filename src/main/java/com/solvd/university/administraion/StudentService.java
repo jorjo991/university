@@ -7,6 +7,8 @@ import com.solvd.university.exception.InvalidRegistrationException;
 import com.solvd.university.exception.RegistrationLimitException;
 import com.solvd.university.student.Student;
 import com.solvd.university.person.Person;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,6 +23,8 @@ public class StudentService implements Printable, Reportable<Student> {
 
     private Map<Student, List<Course>> studentAttendCourse = new HashMap<>();
 
+    private static final Logger LOGGER = LogManager.getLogger(StudentService.class.getName());
+
     public final void registerStudentOnCourse(Student student, Course course) throws RegistrationLimitException {
         if (course.getStudents().contains(student)) throw new DuplicateEntityException("Duplicated Student Detected");
         if (course.getCourseStatus().equals(CourseStatus.CLOSED))
@@ -34,12 +38,12 @@ public class StudentService implements Printable, Reportable<Student> {
 
     @Override
     public void print(Administration a) {
-        System.out.println(a.getStudentRepository().getAll());
+        LOGGER.info(a.getStudentRepository().getAll());
     }
 
     @Override
     public final void report(Student student) {
-        System.out.println("Report of " + student.getName() + " " + student.getSurname());
+        LOGGER.info("Report of " + student.getName() + " " + student.getSurname());
     }
 
     public List<Course> StudentStudyCourses(Student student) {

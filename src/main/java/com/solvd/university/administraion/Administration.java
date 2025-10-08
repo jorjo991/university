@@ -16,6 +16,10 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
+
 public class Administration {
 
     private RepositoryImpl<Student> studentRepository = new RepositoryImpl<>(new ArrayList<>());
@@ -23,8 +27,10 @@ public class Administration {
     private RepositoryImpl<Course> courseRepository = new RepositoryImpl<>(new ArrayList<>());
     private RepositoryImpl<Faculty> facultyRepository = new RepositoryImpl<>(new ArrayList<>());
 
+    private static final Logger LOGGER = LogManager.getLogger(Administration.class.getName());
+
     static {
-        System.out.println("Administration class loaded at " + LocalDateTime.now() + " (+04 timezone)");
+        LOGGER.info("Administration class loaded at " + LocalDateTime.now() + " (+04 timezone)");
     }
 
     public boolean isDuplication(Registrable registrable, List<? extends Registrable> registrableList) {

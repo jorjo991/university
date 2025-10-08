@@ -21,6 +21,7 @@ import com.solvd.university.student.Student;
 import com.solvd.university.university.Address;
 import com.solvd.university.university.University;
 
+
 import java.lang.reflect.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -29,7 +30,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.*;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 public class Main {
+
+    private static final Logger LOGGER = LogManager.getLogger(Main.class.getName());
 
     public static void main(String[] args) throws NoSuchMethodException {
 
@@ -87,7 +93,7 @@ public class Main {
             // try to register same student which must lead DuplicationException
             studentService.registerStudentOnCourse(jack, physics);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            LOGGER.info(e.getMessage());
         }
 
         CourseService courseService = new CourseService();
@@ -130,26 +136,23 @@ public class Main {
         administration.registerFaculty(scienceFaculty);
         administration.registerFaculty(engineeringFaculty);
 
-        System.out.println(administration.getStudentRepository().getAll());
+        LOGGER.info("size{}", administration.getStudentRepository().getAll().size());
 
         //print all faculties ->courses-> students and professor
-        System.out.println(university.getName());
+        LOGGER.info(university.getName());
 
         university.getFaculties().
                 forEach(faculty -> {
-                    System.out.println("Faculty: " + faculty.getName());
-                    System.out.println();
-
+                    LOGGER.info("Faculty: {}", faculty.getName());
                     faculty.getCourses().
                             forEach(course -> {
-                                System.out.println("Course: " + course.getName());
-                                System.out.println("Professor teaches course: " + course.getProfessorTeacherCourse().getName());
+                                LOGGER.info("Course: {}", course.getName());
+                                LOGGER.info("Professor teaches course: {}", course.getProfessorTeacherCourse().getName());
 
                                 course.getStudents().
                                         forEach(student -> {
-                                            System.out.println("Student: " + student.getName());
+                                            LOGGER.info("Student: " + student.getName());
                                         });
-                                System.out.println();
                             });
                 });
 
@@ -168,88 +171,82 @@ public class Main {
             exam.startExam(prof1, finalExamStudents, room101);
             exam.endExam(room101);
         } catch (RuntimeException e) {
-            System.out.println(e.getMessage());
+            LOGGER.info(e.getMessage());
         }
-        System.out.println("Exam result");
+        LOGGER.info("Exam result");
         List<Result> results = exam.getResults(math, finalExamStudents);
         results.
-                forEach(result -> System.out.println(result.getStudent().getName() + " " + result.getResult() + " " + result.getGradeScale()));
+                forEach(result -> LOGGER.info(result.getStudent().getName() + " " + result.getResult() + " " + result.getGradeScale()));
 
         //print all student at university
         studentService.print(administration);
 
         //report about one student
         studentService.report(bob);
-        System.out.println();
         //print course
         courseService.print(administration);
         //iterate Collectins
-        System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.println("Iterating Collections");
+        LOGGER.info("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        LOGGER.info("Iterating Collections");
         Map<Student, List<Course>> studentCourseMap = studentService.getStudentAttendCourse();
 
         studentCourseMap.keySet().
                 forEach(student -> {
-                    System.out.println(student.getName() + " Studies following courses");
+                    LOGGER.info(student.getName() + " Studies following courses");
                     studentCourseMap.get(student).
                             forEach(course -> {
-                                System.out.println(course.getName());
+                                LOGGER.info(course.getName());
                             });
-                    System.out.println();
+
                 });
 
         Map<Professor, List<Course>> professorCourseMap = professorService.getProfessorTeachesCourses();
         professorCourseMap.keySet().
                 forEach(x -> {
-                    System.out.println("Professor " + x.getName() + " teaches");
+                    LOGGER.info("Professor " + x.getName() + " teaches");
                     professorCourseMap.get(x).
                             forEach(y -> {
-                                System.out.println("Course " + y.getName());
-                                System.out.println();
+                                LOGGER.info("Course " + y.getName());
                             });
                 });
 
         //print faculties
-        System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.println("Print Faculties");
+        LOGGER.info("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        LOGGER.info("Print Faculties");
         university.getFaculties().
-                forEach(faculty -> System.out.println(faculty.getName()));
+                forEach(faculty -> LOGGER.info(faculty.getName()));
 
-        System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.println("First Faculty");
+        LOGGER.info("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        LOGGER.info("First Faculty");
         Faculty firstFaculty = university.getFaculties().iterator().next();
 
-        System.out.println(firstFaculty.getName());
-        System.out.println();
+        LOGGER.info(firstFaculty.getName());
 
         //print Courses
-        System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        LOGGER.info("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         university.getFaculties().
                 forEach(x -> {
-                    System.out.println(x.getName());
-                    System.out.println("Courses " + x.getCourses());
+                    LOGGER.info(x.getName());
+                    LOGGER.info("Courses " + x.getCourses());
                 });
-        System.out.println();
 
         //get first course
-        System.out.println("First course");
-        System.out.println(firstFaculty.getCourses().getFirst());
-        System.out.println();
+        LOGGER.info("First course");
+        LOGGER.info(firstFaculty.getCourses().getFirst());
+
 
         //getFirstStudent
-        System.out.println("Print first student");
-        System.out.println("First Student" + firstFaculty.getCourses().getFirst().getStudents().getFirst());
-        System.out.println();
+        LOGGER.info("Print first student");
+        LOGGER.info("First Student" + firstFaculty.getCourses().getFirst().getStudents().getFirst());
 
         //generic method
-        System.out.println("Reports about Students");
+        LOGGER.info("Reports about Students");
         studentService.report(alice);
         studentService.report(bob);
         studentService.report(clara);
-        System.out.println();
 
         //report about professor
-        System.out.println("Report about Professor");
+        LOGGER.info("Report about Professor");
         professorService.report(prof1);
         professorService.report(prof2);
 
@@ -261,31 +258,26 @@ public class Main {
                     .sum();
             return (double) (answer / personList.size());
         };
-        System.out.println();
 
-        System.out.println("Average Age on Course");
-        System.out.println(courseService.averageStudentAgeOnCourse(averageCalculator, math));
-        System.out.println();
+        LOGGER.info("Average Age on Course");
+        LOGGER.info(courseService.averageStudentAgeOnCourse(averageCalculator, math));
 
         //Student average age at university
-        System.out.println("Student average age at university");
-        System.out.println(administration.averageStudentAge(averageCalculator));
-        System.out.println();
+        LOGGER.info("Student average age at university");
+        LOGGER.info(administration.averageStudentAge(averageCalculator));
 
         //Professor average age at university
-        System.out.println("Professor average age at university");
-        System.out.println(administration.averageProfessorAge(averageCalculator));
-        System.out.println();
+        LOGGER.info("Professor average age at university");
+        LOGGER.info(administration.averageProfessorAge(averageCalculator));
 
         //filter courses by credits
         CourseFilter courseFilter = x -> x.getCredit() > 5;
 
-        System.out.println("Filter courses by credits");
+        LOGGER.info("Filter courses by credits");
         administration.getCourseRepository().getAll().
                 forEach(course -> {
-            if (course.courseFilter(courseFilter)) System.out.println(course.getName());
-        });
-        System.out.println();
+                    if (course.courseFilter(courseFilter)) LOGGER.info(course.getName());
+                });
 
         //count Professor by rank
         CountRank countRank = (x, professor) -> {
@@ -293,23 +285,22 @@ public class Main {
             if (professor.getProfessorRank().equals(x)) count++;
             return count;
         };
-        System.out.println("count Professor by rank");
-        System.out.println(administration.countProfessorByRank(countRank, ProfessorRank.ASSISTANT));
+        LOGGER.info("count Professor by rank");
+        LOGGER.info(administration.countProfessorByRank(countRank, ProfessorRank.ASSISTANT));
 
         //test java.util.function functional interfaces
         //test is course is available or not
         Predicate<Course> coursePredicate = x -> x.getStudents().size() < 50;
-        System.out.println();
-        System.out.println("Is course available ");
-        System.out.println(courseService.isCourseAvailable(math, coursePredicate));
-        System.out.println();
+
+        LOGGER.info("Is course available ");
+        LOGGER.info(courseService.isCourseAvailable(math, coursePredicate));
+
 
         //test student performance
         Function<Student, Integer> studentIntegerFunction = x -> x.getCredits() * x.getSemester() / 5;
 
-        System.out.println("Student performance point");
-        System.out.println(studentService.calculateStudentPerformance(studentIntegerFunction, alice));
-        System.out.println();
+        LOGGER.info("Student performance point");
+        LOGGER.info(studentService.calculateStudentPerformance(studentIntegerFunction, alice));
 
         //calculate Score compare to other student on course with credits (Not course Grade)
 
@@ -320,76 +311,72 @@ public class Main {
             return (double) x.getCredits() / sum;
         };
 
-        System.out.println("Student Name: " + alice.getName() + " Score " + studentService.calculateStudentScoreOnCourse(alice, math, courseToDoubleBiFunction));
+        LOGGER.info("Student Name: " + alice.getName() + " Score " + studentService.calculateStudentScoreOnCourse(alice, math, courseToDoubleBiFunction));
 
         IntPredicate intPredicate = x -> x > 70;
 
         //supply new Exam Room
         Supplier<ExamRoom> examRoomSupplier = () -> new ExamRoom("105", 50, true);
-        System.out.println("New exam room " + examRoomSupplier.get().toString());
-        System.out.println();
+        LOGGER.info("New exam room " + examRoomSupplier.get().toString());
 
         BinaryOperator<Integer> integerBinaryOperator = (x, y) -> x / y;
-        System.out.println("Calculate credit score");
-        System.out.println(studentService.calculateCreditScore(alice, integerBinaryOperator));
+        LOGGER.info("Calculate credit score");
+        LOGGER.info(studentService.calculateCreditScore(alice, integerBinaryOperator));
 
         // stream method  test some of them  are tested already
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.println("STREAMS");
+        LOGGER.info("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        LOGGER.info("STREAMS");
 
-        System.out.println("Get Student names on Course " + math.getName());
-        System.out.println(studentService.getStudentsNameOnCourse(math, administration));
+        LOGGER.info("Get Student names on Course " + math.getName());
+        LOGGER.info(studentService.getStudentsNameOnCourse(math, administration));
 
-        System.out.println("Group Student by age");
-        System.out.println(studentService.groupStudentsByAGe(administration));
-        System.out.println();
+        LOGGER.info("Group Student by age");
+        LOGGER.info(studentService.groupStudentsByAGe(administration));
 
         //chek is there is any  associated Professor at University
-        System.out.println("is any associated Professor " + professorService.isAnyAssociatedProfessor(administration));
-        System.out.println();
+        LOGGER.info("is any associated Professor " + professorService.isAnyAssociatedProfessor(administration));
 
         // get professor sorted buy age
-        System.out.println("Professors sorted by age");
-        System.out.println(professorService.getSortedProfessorsByAge(administration));
+        LOGGER.info("Professors sorted by age");
+        LOGGER.info(professorService.getSortedProfessorsByAge(administration));
 
         //get Max age of professors at university
-        System.out.println("Professor Max age at university");
-        System.out.println(professorService.getMaxAgeOFProfessor(administration));
-        System.out.println();
+        LOGGER.info("Professor Max age at university");
+        LOGGER.info(professorService.getMaxAgeOFProfessor(administration));
 
         //flatMap
-        System.out.println("FlatMap ");
-        System.out.println(studentService.getStudentsNameOnCourse(math, administration).stream().flatMap(studentName -> studentName.chars().mapToObj(c -> (char) c)).toList());
+        LOGGER.info("FlatMap ");
+        LOGGER.info(studentService.getStudentsNameOnCourse(math, administration).stream().flatMap(studentName -> studentName.chars().mapToObj(c -> (char) c)).toList());
 
         //reflection
-        System.out.println("---------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.println("REFLECTION");
+        LOGGER.info("---------------------------------------------------------------------------------------------------------------------------------------");
+        LOGGER.info("REFLECTION");
 
         Class<Student> studentClass = Student.class;
 
         Arrays.stream(studentClass.getFields()).
-                forEach(field -> System.out.println("Field: " + field.getName() + ", Type: " + field.getType() + ", Modifiers: " + Modifier.toString(field.getModifiers())));
+                forEach(field -> LOGGER.info("Field: " + field.getName() + ", Type: " + field.getType() + ", Modifiers: " + Modifier.toString(field.getModifiers())));
 
         Arrays.stream(studentClass.getMethods()).
-                forEach(method -> System.out.println("Method: " + method.getName() + ", Return type: " + method.getReturnType() + ", Modifiers: " + Modifier.toString(method.getModifiers())));
+                forEach(method -> LOGGER.info("Method: " + method.getName() + ", Return type: " + method.getReturnType() + ", Modifiers: " + Modifier.toString(method.getModifiers())));
 
         Constructor<Student> studentConstructor = studentClass.getConstructor(Integer.class, Integer.class, String.class, String.class, Gender.class, LocalDate.class, Boolean.class, Integer.class, Integer.class);
         try {
             Student jack1 = studentConstructor.newInstance(10, 25, "Jack", "Taylor", Gender.MALE, LocalDate.of(2002, 8, 14), false, 5, 65);
-            System.out.println(jack1.getAge());
-            System.out.println(jack1.getName());
+            LOGGER.info(jack1.getAge());
+            LOGGER.info(jack1.getName());
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }
 
         Class<Administration> administrationClass = Administration.class;
 
-        System.out.println("Annotations in Administration class");
+        LOGGER.info("Annotations in Administration class ");
         Arrays.stream(administrationClass.getMethods())
                 .forEach(method -> {
                     if (method.isAnnotationPresent(Execution.class)) {
                         Execution annotation = method.getAnnotation(Execution.class);
-                        System.out.println("Method: " + method.getName() + ", Execution message: " + annotation.message());
+                        LOGGER.info("Method: " + method.getName() + ", Execution message: " + annotation.message());
                     }
                 });
     }

@@ -1,16 +1,20 @@
 package com.solvd.university.student;
 
+import com.solvd.university.administraion.CourseService;
 import com.solvd.university.administraion.StudentService;
 import com.solvd.university.course.Course;
 import com.solvd.university.exception.InvalidRegistrationException;
 import com.solvd.university.exception.RegistrationLimitException;
 import com.solvd.university.person.Gender;
 import com.solvd.university.person.Person;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.time.LocalDate;
 
 public final class Student extends Person {
 
+    private static final Logger LOGGER = LogManager.getLogger(Student.class.getName());
     private static int countStudent;
 
     private final LocalDate date;
@@ -33,9 +37,9 @@ public final class Student extends Person {
         try {
             studentService.registerStudentOnCourse(this, course);
         } catch (RegistrationLimitException e) {
-            System.out.println(e.getMessage());
+            LOGGER.info(e.getMessage());
         } finally {
-            System.out.println("Student tried to Register");
+            LOGGER.info("Student tried to Register");
         }
     }
 
@@ -45,7 +49,7 @@ public final class Student extends Person {
 
     @Override
     public void getInfo() {
-        System.out.println("Student Info: " + this.getName() + " " + this.getSurname() + " " + this.getDateOfBirt());
+        LOGGER.info("Student Info: " + this.getName() + " " + this.getSurname() + " " + this.getDateOfBirt());
     }
 
     // info about DateOfBirt
@@ -99,7 +103,7 @@ public final class Student extends Person {
 
     @Override
     public void register() {
-        System.out.println(this.getName() + "ise register as student");
+        LOGGER.info(this.getName() + "ise register as student");
     }
 
     public static int getCountStudent() {

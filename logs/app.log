@@ -1,0 +1,175 @@
+2025-10-08 15:17:30 [main] INFO  com.solvd.university.main.Main - mesage
+2025-10-08 15:17:31 [main] INFO  com.solvd.university.main.Main - size10
+2025-10-08 15:28:21 [main] INFO  com.solvd.university.main.Main - Student is not able to register this course
+2025-10-08 15:28:21 [main] INFO  com.solvd.university.main.Main - size10
+2025-10-08 15:28:21 [main] INFO  com.solvd.university.main.Main - Faculty: Science Faculty
+2025-10-08 15:28:21 [main] INFO  com.solvd.university.main.Main -  
+2025-10-08 15:28:21 [main] INFO  com.solvd.university.main.Main - Faculty: Engineering Faculty
+2025-10-08 15:28:21 [main] INFO  com.solvd.university.main.Main -  
+2025-10-08 15:28:47 [main] INFO  com.solvd.university.main.Main - Student is not able to register this course
+2025-10-08 15:28:47 [main] INFO  com.solvd.university.main.Main - size10
+2025-10-08 15:28:47 [main] INFO  com.solvd.university.main.Main - Faculty: Science Faculty
+2025-10-08 15:28:47 [main] INFO  com.solvd.university.main.Main - Faculty: Engineering Faculty
+2025-10-08 15:29:26 [main] INFO  com.solvd.university.main.Main - Student is not able to register this course
+2025-10-08 15:29:26 [main] INFO  com.solvd.university.main.Main - size10
+2025-10-08 15:29:26 [main] INFO  com.solvd.university.main.Main - KIU
+2025-10-08 15:29:26 [main] INFO  com.solvd.university.main.Main - Faculty: Science Faculty
+2025-10-08 15:29:26 [main] INFO  com.solvd.university.main.Main - Faculty: Engineering Faculty
+2025-10-08 15:29:49 [main] INFO  com.solvd.university.main.Main - Student is not able to register this course
+2025-10-08 15:29:49 [main] INFO  com.solvd.university.main.Main - size10
+2025-10-08 15:29:49 [main] INFO  com.solvd.university.main.Main - KIU
+2025-10-08 15:29:49 [main] INFO  com.solvd.university.main.Main - Faculty: Science Faculty
+2025-10-08 15:29:49 [main] INFO  com.solvd.university.main.Main - Faculty: Engineering Faculty
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.administraion.Administration - Administration class loaded at 2025-10-08T15:52:06.904180300 (+04 timezone)
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Student is not able to register this course
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - size10
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - KIU
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Faculty: Science Faculty
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Course: Mathematics
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Professor teaches course:  Emily
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Student: Alice
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Student: Bob
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Student: Clara
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Course: Computer Science
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Professor teaches course: James
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Student: David
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Student: Eva
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Student: Frank
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Student: Grace
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Faculty: Engineering Faculty
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Course: Physics
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Professor teaches course: Eva
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.exam.ExamSession - Exam session started in Room Room101 at 2025-10-08T15:52:06.944014600 (+04 timezone)
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.exam.ExamSession - Exam conducted in Room Room101
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.exam.FinalExam - Exam Started Successfully
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.exam.FinalExam - Exam Ended
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.exam.ExamSession - Exam session closed in Room Room101 at 2025-10-08T15:52:06.945212300 (+04 timezone)
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Exam result
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Alice 71.49072858533381 C
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Bob 75.03742824395475 C
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Clara 44.92093609513109 F
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.administraion.StudentService - [Person{id=1, age=20, name='Alice', surname='Brown', gender=FEMALE}Student{date=2005-01-10, scholarship=true, semester=2, credits=30}, Person{id=2, age=21, name='Bob', surname='Smith', gender=MALE}Student{date=2004-03-15, scholarship=false, semester=3, credits=40}, Person{id=3, age=22, name='Clara', surname='Johnson', gender=FEMALE}Student{date=2003-05-20, scholarship=true, semester=4, credits=50}, Person{id=4, age=19, name='David', surname='Williams', gender=MALE}Student{date=2006-07-25, scholarship=false, semester=1, credits=20}, Person{id=5, age=23, name='Eva', surname='Taylor', gender=FEMALE}Student{date=2002-09-30, scholarship=true, semester=5, credits=60}, Person{id=6, age=20, name='Frank', surname='Miller', gender=MALE}Student{date=2005-11-12, scholarship=false, semester=2, credits=35}, Person{id=7, age=21, name='Grace', surname='Davis', gender=FEMALE}Student{date=2004-02-08, scholarship=true, semester=3, credits=45}, Person{id=8, age=22, name='Henry', surname='Wilson', gender=MALE}Student{date=2003-04-18, scholarship=false, semester=4, credits=55}, Person{id=9, age=30, name='Isabella', surname='Moore', gender=FEMALE}Student{date=2006-06-22, scholarship=true, semester=1, credits=25}, Person{id=10, age=25, name='Jack', surname='Taylor', gender=MALE}Student{date=2002-08-14, scholarship=false, semester=5, credits=65}]
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.administraion.StudentService - Report of Bob Smith
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.administraion.CourseService - [Course{name='Mathematics', professorTeacherCourse=Person{id=1, age=45, name=' Emily', surname='Smith', gender=FEMALE}, credit=6, students=[Person{id=1, age=20, name='Alice', surname='Brown', gender=FEMALE}Student{date=2005-01-10, scholarship=true, semester=2, credits=30}, Person{id=2, age=21, name='Bob', surname='Smith', gender=MALE}Student{date=2004-03-15, scholarship=false, semester=3, credits=40}, Person{id=3, age=22, name='Clara', surname='Johnson', gender=FEMALE}Student{date=2003-05-20, scholarship=true, semester=4, credits=50}]}, Course{name='Computer Science', professorTeacherCourse=Person{id=2, age=50, name='James', surname='Johnson', gender=MALE}, credit=8, students=[Person{id=4, age=19, name='David', surname='Williams', gender=MALE}Student{date=2006-07-25, scholarship=false, semester=1, credits=20}, Person{id=5, age=23, name='Eva', surname='Taylor', gender=FEMALE}Student{date=2002-09-30, scholarship=true, semester=5, credits=60}, Person{id=6, age=20, name='Frank', surname='Miller', gender=MALE}Student{date=2005-11-12, scholarship=false, semester=2, credits=35}, Person{id=7, age=21, name='Grace', surname='Davis', gender=FEMALE}Student{date=2004-02-08, scholarship=true, semester=3, credits=45}]}, Course{name='Physics', professorTeacherCourse=Person{id=3, age=38, name='Eva', surname='Williams', gender=FEMALE}, credit=5, students=[]}]
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Iterating Collections
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Bob Studies following courses
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Mathematics
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Grace Studies following courses
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Computer Science
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - David Studies following courses
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Computer Science
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Clara Studies following courses
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Mathematics
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Frank Studies following courses
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Computer Science
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Alice Studies following courses
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Mathematics
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Eva Studies following courses
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Computer Science
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Professor James teaches
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Course Computer Science
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Professor  Emily teaches
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Course Mathematics
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Professor Eva teaches
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Course Physics
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Print Faculties
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Science Faculty
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Engineering Faculty
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - First Faculty
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Science Faculty
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Science Faculty
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Courses [Course{name='Mathematics', professorTeacherCourse=Person{id=1, age=45, name=' Emily', surname='Smith', gender=FEMALE}, credit=6, students=[Person{id=1, age=20, name='Alice', surname='Brown', gender=FEMALE}Student{date=2005-01-10, scholarship=true, semester=2, credits=30}, Person{id=2, age=21, name='Bob', surname='Smith', gender=MALE}Student{date=2004-03-15, scholarship=false, semester=3, credits=40}, Person{id=3, age=22, name='Clara', surname='Johnson', gender=FEMALE}Student{date=2003-05-20, scholarship=true, semester=4, credits=50}]}, Course{name='Computer Science', professorTeacherCourse=Person{id=2, age=50, name='James', surname='Johnson', gender=MALE}, credit=8, students=[Person{id=4, age=19, name='David', surname='Williams', gender=MALE}Student{date=2006-07-25, scholarship=false, semester=1, credits=20}, Person{id=5, age=23, name='Eva', surname='Taylor', gender=FEMALE}Student{date=2002-09-30, scholarship=true, semester=5, credits=60}, Person{id=6, age=20, name='Frank', surname='Miller', gender=MALE}Student{date=2005-11-12, scholarship=false, semester=2, credits=35}, Person{id=7, age=21, name='Grace', surname='Davis', gender=FEMALE}Student{date=2004-02-08, scholarship=true, semester=3, credits=45}]}]
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Engineering Faculty
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Courses [Course{name='Physics', professorTeacherCourse=Person{id=3, age=38, name='Eva', surname='Williams', gender=FEMALE}, credit=5, students=[]}]
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - First course
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Course{name='Mathematics', professorTeacherCourse=Person{id=1, age=45, name=' Emily', surname='Smith', gender=FEMALE}, credit=6, students=[Person{id=1, age=20, name='Alice', surname='Brown', gender=FEMALE}Student{date=2005-01-10, scholarship=true, semester=2, credits=30}, Person{id=2, age=21, name='Bob', surname='Smith', gender=MALE}Student{date=2004-03-15, scholarship=false, semester=3, credits=40}, Person{id=3, age=22, name='Clara', surname='Johnson', gender=FEMALE}Student{date=2003-05-20, scholarship=true, semester=4, credits=50}]}
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Print first student
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - First StudentPerson{id=1, age=20, name='Alice', surname='Brown', gender=FEMALE}Student{date=2005-01-10, scholarship=true, semester=2, credits=30}
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Reports about Students
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.administraion.StudentService - Report of Alice Brown
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.administraion.StudentService - Report of Bob Smith
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.administraion.StudentService - Report of Clara Johnson
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Report about Professor
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.administraion.ProfessorService - Report of  Emily  Smith
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.administraion.ProfessorService - Report of James  Johnson
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Average Age on Course
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - 21.0
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Student average age at university
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - 22.0
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Professor average age at university
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - 44.0
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Filter courses by credits
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Mathematics
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Computer Science
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - count Professor by rank
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - 2
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Is course available 
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - true
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Student performance point
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - 12
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Student Name: Alice Score 0.25
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - New exam room ExamRoom{id='105', capacity=50, available=true}
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Calculate credit score
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - 15
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - STREAMS
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - Get Student names on Course Mathematics
+2025-10-08 15:52:06 [main] INFO  com.solvd.university.main.Main - [Alice, Bob, Clara]
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Group Student by age
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - {19=[Person{id=4, age=19, name='David', surname='Williams', gender=MALE}Student{date=2006-07-25, scholarship=false, semester=1, credits=20}], 20=[Person{id=1, age=20, name='Alice', surname='Brown', gender=FEMALE}Student{date=2005-01-10, scholarship=true, semester=2, credits=30}, Person{id=6, age=20, name='Frank', surname='Miller', gender=MALE}Student{date=2005-11-12, scholarship=false, semester=2, credits=35}], 21=[Person{id=2, age=21, name='Bob', surname='Smith', gender=MALE}Student{date=2004-03-15, scholarship=false, semester=3, credits=40}, Person{id=7, age=21, name='Grace', surname='Davis', gender=FEMALE}Student{date=2004-02-08, scholarship=true, semester=3, credits=45}], 22=[Person{id=3, age=22, name='Clara', surname='Johnson', gender=FEMALE}Student{date=2003-05-20, scholarship=true, semester=4, credits=50}, Person{id=8, age=22, name='Henry', surname='Wilson', gender=MALE}Student{date=2003-04-18, scholarship=false, semester=4, credits=55}], 23=[Person{id=5, age=23, name='Eva', surname='Taylor', gender=FEMALE}Student{date=2002-09-30, scholarship=true, semester=5, credits=60}], 25=[Person{id=10, age=25, name='Jack', surname='Taylor', gender=MALE}Student{date=2002-08-14, scholarship=false, semester=5, credits=65}], 30=[Person{id=9, age=30, name='Isabella', surname='Moore', gender=FEMALE}Student{date=2006-06-22, scholarship=true, semester=1, credits=25}]}
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - is any associated Professor false
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Professors sorted by age
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - [Person{id=3, age=38, name='Eva', surname='Williams', gender=FEMALE}, Person{id=1, age=45, name=' Emily', surname='Smith', gender=FEMALE}, Person{id=2, age=50, name='James', surname='Johnson', gender=MALE}]
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Professor Max age at university
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - 50
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - FlatMap 
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - [A, l, i, c, e, B, o, b, C, l, a, r, a]
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - ---------------------------------------------------------------------------------------------------------------------------------------
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - REFLECTION
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: getCredits, Return type: int, Modifiers: public
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: getSemester, Return type: class java.lang.Integer, Modifiers: public
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: toString, Return type: class java.lang.String, Modifiers: public
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: register, Return type: void, Modifiers: public
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: getDate, Return type: class java.time.LocalDate, Modifiers: public
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: getInfo, Return type: void, Modifiers: public
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: sendRegistrationRequestONCourse, Return type: void, Modifiers: public
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: setCredits, Return type: void, Modifiers: public
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: setSemester, Return type: void, Modifiers: public
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: setStudentStatus, Return type: void, Modifiers: public
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: setScholarship, Return type: void, Modifiers: public
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: getCountStudent, Return type: int, Modifiers: public static
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: getScholarship, Return type: class java.lang.Boolean, Modifiers: public
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: setCountStudent, Return type: void, Modifiers: public static
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: getDateOfBirt, Return type: class java.time.LocalDate, Modifiers: public
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: getStudentStatus, Return type: class com.solvd.university.student.StudentStatus, Modifiers: public
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: setId, Return type: void, Modifiers: public
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: getAge, Return type: class java.lang.Integer, Modifiers: public
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: setAge, Return type: void, Modifiers: public
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: getName, Return type: class java.lang.String, Modifiers: public
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: equals, Return type: boolean, Modifiers: public
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: hashCode, Return type: int, Modifiers: public
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: setName, Return type: void, Modifiers: public
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: getId, Return type: class java.lang.Integer, Modifiers: public
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: getSurname, Return type: class java.lang.String, Modifiers: public
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: setSurname, Return type: void, Modifiers: public
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: getGender, Return type: class com.solvd.university.person.Gender, Modifiers: public
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: setGender, Return type: void, Modifiers: public
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: getCountPerson, Return type: int, Modifiers: public static
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: setCountPerson, Return type: void, Modifiers: public static
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: getClass, Return type: class java.lang.Class, Modifiers: public final native
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: notify, Return type: void, Modifiers: public final native
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: notifyAll, Return type: void, Modifiers: public final native
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: wait, Return type: void, Modifiers: public final
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: wait, Return type: void, Modifiers: public final
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: wait, Return type: void, Modifiers: public final
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - 25
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Jack
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Annotations in Administration class
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: registerProfessor, Execution message: important to execute
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: registerCourse, Execution message: important to execute
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: registerStudent, Execution message: important to execute
+2025-10-08 15:52:07 [main] INFO  com.solvd.university.main.Main - Method: registerFaculty, Execution message: important to execute

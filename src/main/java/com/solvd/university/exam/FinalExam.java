@@ -1,16 +1,21 @@
 package com.solvd.university.exam;
 
+import com.solvd.university.administraion.CourseService;
 import com.solvd.university.course.Course;
 import com.solvd.university.exception.RoomUnavailableException;
 import com.solvd.university.professor.Professor;
 import com.solvd.university.room.Room;
 import com.solvd.university.student.GradeScale;
 import com.solvd.university.student.Student;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FinalExam extends Exam implements ExamBehavior {
+
+    private static final Logger LOGGER = LogManager.getLogger(FinalExam.class.getName());
 
     public FinalExam(List<Student> students, Course course) {
         super(students, course);
@@ -21,14 +26,14 @@ public class FinalExam extends Exam implements ExamBehavior {
         if (!room.getAvailable()) throw new RoomUnavailableException("Room is not available");
         if (professor != null && !students.isEmpty() && room.getAvailable()) {
             room.setAvailable(false);
-            System.out.println("Exam Started Successfully");
+            LOGGER.info("Exam Started Successfully");
         }
     }
 
     @Override
     public void endExam(Room room) {
         room.setAvailable(true);
-        System.out.println("Exam Ended");
+        LOGGER.info("Exam Ended");
     }
 
     @Override

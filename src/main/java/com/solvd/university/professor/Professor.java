@@ -1,11 +1,16 @@
 package com.solvd.university.professor;
 
+import com.solvd.university.administraion.CourseService;
 import com.solvd.university.person.Gender;
 import com.solvd.university.person.Person;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.function.IntPredicate;
 
 public final class Professor extends Person {
+
+    private static final Logger LOGGER = LogManager.getLogger(Professor.class.getName());
 
     private final String specialization;
     private final ProfessorRank professorRank;
@@ -25,7 +30,7 @@ public final class Professor extends Person {
 
     @Override
     public void getInfo() {
-        System.out.println(this.getName() + " " + this.getSurname() + " " + this.getSpecialization());
+        LOGGER.info(this.getName() + " " + this.getSurname() + " " + this.getSpecialization());
     }
 
     public String getSpecialization() {
@@ -38,7 +43,7 @@ public final class Professor extends Person {
 
     @Override
     public void register() {
-        System.out.println(this.getName() + "is register");
+        LOGGER.info(this.getName() + "is register");
     }
 
 }
