@@ -19,7 +19,6 @@ import java.util.List;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
-
 public class Administration {
 
     private RepositoryImpl<Student> studentRepository = new RepositoryImpl<>(new ArrayList<>());

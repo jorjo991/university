@@ -15,7 +15,6 @@ public class ProfessorService implements Printable, Reportable<Professor> {
 
     private static final Logger LOGGER = LogManager.getLogger(ProfessorService.class.getName());
 
-
     public final void registerProfessorOnCourse(Professor professor, Course course) {
         if (professor.getAge() > 70) throw new InvalidAgeException("Professor age is not Accepted");
         course.registerProfessorOnCourse(professor);

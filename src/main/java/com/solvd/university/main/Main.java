@@ -21,7 +21,6 @@ import com.solvd.university.student.Student;
 import com.solvd.university.university.Address;
 import com.solvd.university.university.University;
 
-
 import java.lang.reflect.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -136,9 +135,7 @@ public class Main {
         administration.registerFaculty(scienceFaculty);
         administration.registerFaculty(engineeringFaculty);
 
-        LOGGER.info("size{}", administration.getStudentRepository().getAll().size());
-        LOGGER.info("name of first student {}", administration.getStudentRepository().getAll().getFirst());
-
+        LOGGER.info("name of first student {} ", administration.getStudentRepository().getAll().getFirst());
 
         //print all faculties ->courses-> students and professor
         LOGGER.info(university.getName());
@@ -236,7 +233,6 @@ public class Main {
         LOGGER.info("First course");
         LOGGER.info(firstFaculty.getCourses().getFirst());
 
-
         //getFirstStudent
         LOGGER.info("Print first student");
         LOGGER.info("First Student" + firstFaculty.getCourses().getFirst().getStudents().getFirst());
@@ -296,7 +292,6 @@ public class Main {
 
         LOGGER.info("Is course available ");
         LOGGER.info(courseService.isCourseAvailable(math, coursePredicate));
-
 
         //test student performance
         Function<Student, Integer> studentIntegerFunction = x -> x.getCredits() * x.getSemester() / 5;
