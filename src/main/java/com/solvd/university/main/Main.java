@@ -373,5 +373,16 @@ public class Main {
                         LOGGER.info("Method: " + method.getName() + ", Execution message: " + annotation.message());
                     }
                 });
+
+        Runnable runnable1= () -> System.out.println("thread 1 running");
+
+        Runnable runnable2= ()-> System.out.println("thread 2 running");
+
+        Thread  t1= new Thread(runnable1);
+        Thread t2= new Thread(runnable2);
+
+        t1.start();
+        t2.start();
+
     }
 }
